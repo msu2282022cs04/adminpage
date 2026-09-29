@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <clipPath id="circleClip">
+      <circle cx="100" cy="100" r="96"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="96" fill="url(#bgGrad)"/>
+
+  <g clip-path="url(#circleClip)">
+    <!-- Suit Body -->
+    <path d="M40 200 C40 155 65 145 100 145 C135 145 160 155 160 200 Z" fill="#1e293b"/>
+    
+    <!-- White Shirt Collar & Chest -->
+    <polygon points="100,140 82,148 90,195 110,195 118,148" fill="#ffffff"/>
+    
+    <!-- Dark Blue Tie -->
+    <polygon points="100,147 95,152 97,185 100,192 103,185 105,152" fill="#0f172a"/>
+    <polygon points="95,147 105,147 103,153 97,153" fill="#334155"/>
+
+    <!-- Suit Lapels -->
+    <path d="M68 152 L84 195 L65 200 L46 168 Z" fill="#0f172a"/>
+    <path d="M132 152 L116 195 L135 200 L154 168 Z" fill="#0f172a"/>
+
+    <!-- Neck -->
+    <rect x="87" y="118" width="26" height="28" rx="4" fill="#fbcfe8" />
+    <path d="M87 118 L100 135 L113 118 Z" fill="#f472b6" opacity="0.2"/>
+
+    <!-- Head / Face -->
+    <ellipse cx="100" cy="95" rx="34" ry="40" fill="#fed7aa"/>
+    
+    <!-- Ears -->
+    <circle cx="65" cy="96" r="8" fill="#fed7aa"/>
+    <circle cx="135" cy="96" r="8" fill="#fed7aa"/>
+
+    <!-- Modern Stylish Hair -->
+    <path d="M64 88 C62 65 78 52 100 52 C122 52 138 65 136 88 C130 72 120 66 100 66 C80 66 70 72 64 88 Z" fill="#18181b"/>
+    <path d="M66 82 C65 60 85 46 105 46 C125 46 137 56 137 72 C131 62 118 56 102 56 C86 56 72 66 66 82 Z" fill="#27272a"/>
+
+    <!-- Eyebrows -->
+    <path d="M78 80 Q86 76 93 80" stroke="#18181b" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <path d="M107 80 Q114 76 122 80" stroke="#18181b" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+    <!-- Glasses Frame -->
+    <!-- Left Rim -->
+    <rect x="74" y="83" width="22" height="18" rx="5" fill="rgba(255,255,255,0.4)" stroke="#0f172a" stroke-width="3"/>
+    <!-- Right Rim -->
+    <rect x="104" y="83" width="22" height="18" rx="5" fill="rgba(255,255,255,0.4)" stroke="#0f172a" stroke-width="3"/>
+    <!-- Bridge -->
+    <path d="M96 90 L104 90" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+    <!-- Temples -->
+    <path d="M74 89 L66 88" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+    <path d="M126 89 L134 88" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Eyes -->
+    <circle cx="85" cy="91" r="3.5" fill="#0f172a"/>
+    <circle cx="86" cy="89.5" r="1.2" fill="#ffffff"/>
+    <circle cx="115" cy="91" r="3.5" fill="#0f172a"/>
+    <circle cx="116" cy="89.5" r="1.2" fill="#ffffff"/>
+
+    <!-- Nose -->
+    <path d="M98 97 L100 105 L104 105" stroke="#ea580c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.6"/>
+
+    <!-- Gentle Smile -->
+    <path d="M88 114 Q100 123 112 114" stroke="#c2410c" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <!-- Rosy Cheeks -->
+    <ellipse cx="76" cy="103" rx="5" ry="3" fill="#f43f5e" opacity="0.25"/>
+    <ellipse cx="124" cy="103" rx="5" ry="3" fill="#f43f5e" opacity="0.25"/>
+  </g>
+</svg>

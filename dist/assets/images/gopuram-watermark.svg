@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 320" width="300" height="320" fill="none">
+  <defs>
+    <linearGradient id="gopuramFade" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#1e40af" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.0"/>
+    </linearGradient>
+    <linearGradient id="waveFade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#2563eb" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0369a1" stop-opacity="0.0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Flowing dynamic ambient waves -->
+  <path d="M-20 280 C 60 220, 140 310, 320 250 L 320 340 L -20 340 Z" fill="url(#waveFade)"/>
+  <path d="M-20 250 C 80 200, 180 290, 320 220" stroke="#38bdf8" stroke-width="2.5" stroke-opacity="0.4"/>
+  <path d="M-20 290 C 100 240, 200 300, 320 260" stroke="#60a5fa" stroke-width="1.5" stroke-opacity="0.25"/>
+
+  <!-- Detailed Gopuram Architectural Outline -->
+  <g stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.25" fill="none">
+    <!-- Kalasams (Pinnacles) on top -->
+    <path d="M 135 70 L 135 60 A 3 3 0 0 1 141 60 L 141 70"/>
+    <circle cx="138" cy="56" r="2.5" fill="#38bdf8" fill-opacity="0.3"/>
+    
+    <path d="M 147 66 L 147 52 A 3 3 0 0 1 153 52 L 153 66"/>
+    <circle cx="150" cy="48" r="3" fill="#38bdf8" fill-opacity="0.4"/>
+    
+    <path d="M 159 70 L 159 60 A 3 3 0 0 1 165 60 L 165 70"/>
+    <circle cx="162" cy="56" r="2.5" fill="#38bdf8" fill-opacity="0.3"/>
+
+    <!-- Tier 1 (Top) -->
+    <path d="M 130 72 L 170 72 L 166 88 L 134 88 Z"/>
+    <line x1="130" y1="78" x2="170" y2="78"/>
+    <circle cx="150" cy="80" r="3"/>
+    
+    <!-- Tier 2 -->
+    <path d="M 124 90 L 176 90 L 171 110 L 129 110 Z"/>
+    <line x1="124" y1="96" x2="176" y2="96"/>
+    <rect x="142" y="98" width="16" height="12" rx="2"/>
+    <line x1="134" y1="102" x2="138" y2="102"/>
+    <line x1="162" y1="102" x2="166" y2="102"/>
+
+    <!-- Tier 3 -->
+    <path d="M 118 112 L 182 112 L 176 136 L 124 136 Z"/>
+    <line x1="118" y1="120" x2="182" y2="120"/>
+    <rect x="140" y="122" width="20" height="14" rx="2"/>
+    <rect x="127" y="124" width="8" height="10" rx="1"/>
+    <rect x="165" y="124" width="8" height="10" rx="1"/>
+
+    <!-- Tier 4 -->
+    <path d="M 112 138 L 188 138 L 181 166 L 119 166 Z"/>
+    <line x1="112" y1="148" x2="188" y2="148"/>
+    <rect x="138" y="150" width="24" height="16" rx="2"/>
+    <rect x="122" y="152" width="10" height="12" rx="1"/>
+    <rect x="168" y="152" width="10" height="12" rx="1"/>
+
+    <!-- Tier 5 -->
+    <path d="M 106 168 L 194 168 L 186 200 L 114 200 Z"/>
+    <line x1="106" y1="180" x2="194" y2="180"/>
+    <rect x="136" y="182" width="28" height="18" rx="2"/>
+    <rect x="118" y="184" width="12" height="14" rx="1"/>
+    <rect x="170" y="184" width="12" height="14" rx="1"/>
+
+    <!-- Base Gateway / Entrance (Dwaram) -->
+    <path d="M 100 202 L 200 202 L 200 250 L 100 250 Z"/>
+    <!-- Archway -->
+    <path d="M 132 250 L 132 216 A 18 18 0 0 1 168 216 L 168 250 Z"/>
+    <line x1="100" y1="210" x2="200" y2="210"/>
+    <line x1="100" y1="220" x2="200" y2="220"/>
+    <rect x="108" y="224" width="16" height="20" rx="1"/>
+    <rect x="176" y="224" width="16" height="20" rx="1"/>
+    
+    <!-- Outer Base Platform -->
+    <path d="M 85 250 L 215 250 L 220 270 L 80 270 Z"/>
+    <line x1="80" y1="260" x2="220" y2="260"/>
+  </g>
+</svg>

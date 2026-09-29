@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="ta" data-lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>தமிழி | இலவச வரம்புகள் & கிரெடிட்கள் - Free Limits & Credits</title>
+  <meta name="description" content="THAMILI Tamil AI Platform Administration Dashboard - Free Limits & Credits Management">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Mobile Overlay Backdrop -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <div class="app-layout">
+    
+    <!-- ==========================================================================
+         SIDEBAR NAVIGATION
+         ========================================================================== -->
+    <aside class="sidebar" id="sidebar">
+      
+      <!-- Logo Header -->
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-logo-link" id="logoLink">
+          <img src="assets/images/thamili-logo-ta.png" alt="தமிழி" class="sidebar-brand-logo" id="sidebarBrandLogo">
+        </a>
+      </div>
+
+      <!-- Navigation List -->
+      <nav class="sidebar-nav">
+        
+        <!-- 1. Home -->
+        <div class="nav-item">
+          <a href="index.html" class="nav-link" id="navHome">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span class="nav-text" data-i18n="nav_home">முகப்பு</span>
+          </a>
+          <div class="submenu-flyout">
+            <ul class="submenu-list">
+              <li><a href="index.html" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_home_overview">செயல்பாட்டு பலகை</span></a></li>
+              <li><a href="reports.html" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_home_analytics">பயன்பாட்டு புள்ளிவிவரங்கள்</span></a></li>
+              <li><a href="ai-tools.html" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_home_quick">விரைவு இணைப்புகள்</span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2. User Management -->
+        <div class="nav-item">
+          <a href="users.html" class="nav-link" id="navUsers">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span class="nav-text" data-i18n="nav_users">பயனர் மேலாண்மை</span>
+          </a>
+          <div class="submenu-flyout">
+            <ul class="submenu-list">
+              <li><a href="users.html" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_users_list">பயனர் பட்டியல்</span></a></li>
+              <li><a href="users.html#add" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_users_add">புதிய பயனர் சேர்</span></a></li>
+              <li><a href="users.html#roles" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_users_roles">பயனர் அனுமதிகள்</span></a></li>
+              <li><a href="users.html#blocked" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_users_blocked">தடை செய்யப்பட்டவர்கள்</span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3. AI Tools (Active) -->
+        <div class="nav-item active">
+          <a href="ai-tools.html" class="nav-link" id="navAiTools">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+            </svg>
+            <span class="nav-text" data-i18n="nav_ai_tools">AI கருவிகள்</span>
+          </a>
+          <div class="submenu-flyout">
+            <ul class="submenu-list">
+              <li><a href="ai-tools.html" class="submenu-link"><span class="sub-dot"></span><span data-i18n="page_limits_title">இலவச வரம்புகள் &amp; கிரெடிட்கள்</span></a></li>
+              <li><a href="ai-usage.html#tools" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_ai_usage_tools">கருவிகள் பகுப்பாய்வு</span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 4. AI Usage -->
+        <div class="nav-item">
+          <a href="ai-usage.html" class="nav-link" id="navAiUsage">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+            <span class="nav-text" data-i18n="nav_ai_usage">AI பயன்பாடு</span>
+          </a>
+          <div class="submenu-flyout">
+            <ul class="submenu-list">
+              <li><a href="ai-usage.html#stats" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_ai_usage_stats">பயன்பாட்டு புள்ளிவிவரங்கள்</span></a></li>
+              <li><a href="ai-usage.html#tools" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_ai_usage_tools">கருவிகள் பகுப்பாய்வு</span></a></li>
+              <li><a href="ai-usage.html#activity" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_ai_usage_activity">சமீபத்திய செயல்பாடுகள்</span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 5. Settings -->
+        <div class="nav-item">
+          <a href="settings.html" class="nav-link" id="navSettings">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+            <span class="nav-text" data-i18n="nav_settings">அமைப்புகள்</span>
+          </a>
+        </div>
+
+        <!-- 6. Language Settings -->
+        <div class="nav-item">
+          <a href="language.html" class="nav-link" id="navLanguage">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span class="nav-text" data-i18n="nav_language">மொழி அமைப்பு</span>
+          </a>
+        </div>
+
+        <!-- 7. Reports -->
+        <div class="nav-item">
+          <a href="reports.html" class="nav-link" id="navReports">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+            <span class="nav-text" data-i18n="nav_reports">தகவல் அறிக்கைகள்</span>
+          </a>
+        </div>
+
+        <!-- 8. Feedback -->
+        <div class="nav-item">
+          <a href="feedback.html" class="nav-link" id="navFeedback">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span class="nav-text" data-i18n="nav_feedback">பயனர் கருத்துக்கள்</span>
+          </a>
+        </div>
+
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <div class="sidebar-admin-card" onclick="openModal('profileModal')">
+          <div class="sidebar-avatar-wrapper">
+            <img src="assets/images/robot-avatar.jpg" alt="Admin" class="sidebar-avatar">
+            <span class="online-indicator"></span>
+          </div>
+          <div class="sidebar-admin-info">
+            <span class="sidebar-admin-name admin-display-name" data-i18n="admin_name">Admin</span>
+            <span class="sidebar-admin-role" data-i18n="admin_title">நிர்வாகி</span>
+          </div>
+        </div>
+
+        <div class="sidebar-quote-container">
+          <span class="sidebar-quote-icon">🍃</span>
+          <span class="sidebar-quote-text" data-i18n="sidebar_quote">"தமிழின் சிறந்த AI உலகம்..."</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ==========================================================================
+         MAIN CONTENT WRAPPER
+         ========================================================================== -->
+    <main class="main-wrapper">
+      
+      <!-- Top Header -->
+      <header class="top-header">
+        
+        <!-- Mobile Toggle Button -->
+        <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Toggle Navigation">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+
+        <!-- Search Input with Live Dropdown -->
+        <div class="header-search-wrapper">
+          <div class="search-input-group">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" class="search-input" id="globalSearchInput" data-i18n-placeholder="search_placeholder" placeholder="தேடுங்கள்..." autocomplete="off">
+          </div>
+          <div class="search-results-dropdown hidden" id="searchResultsDropdown"></div>
+        </div>
+
+        <!-- Header Actions Right -->
+        <div class="header-actions">
+          
+          <!-- Language Dropdown Selector -->
+          <div class="dropdown-container">
+            <button class="header-pill-btn" id="langDropdownBtn" aria-label="Language Selector">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              <span id="currentLangLabel">தமிழ்</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="dropdown-menu hidden" id="langDropdownMenu">
+              <a href="#" class="dropdown-item lang-opt active" data-lang-val="ta">
+                <span>தமிழ்</span>
+              </a>
+              <a href="#" class="dropdown-item lang-opt" data-lang-val="en">
+                <span>English</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Date & Time Widget -->
+          <div class="header-datetime-widget">
+            <svg class="datetime-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <div class="datetime-text">
+              <span class="header-date" id="headerDate">19 செப்டம்பர் 2026</span>
+              <span class="header-time" id="headerTime">10:24 AM</span>
+            </div>
+          </div>
+
+          <!-- Admin Profile Dropdown Widget -->
+          <div class="dropdown-container">
+            <button class="header-pill-btn admin-profile-pill" id="profileDropdownBtn" aria-label="Admin Menu">
+              <img src="assets/images/robot-avatar.jpg" alt="Admin" class="admin-header-avatar">
+              <span class="admin-display-name" data-i18n="admin_name">Admin</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="dropdown-menu hidden" id="profileDropdownMenu">
+              <a href="#" class="dropdown-item" id="menuViewProfile">
+                <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span data-i18n="profile_menu_profile">சுயவிவரம்</span>
+              </a>
+              <a href="#" class="dropdown-item" id="menuEditProfile">
+                <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                <span data-i18n="profile_menu_edit">சுயவிவரத்தைத் திருத்து</span>
+              </a>
+              <a href="#" class="dropdown-item" id="menuChangePassword">
+                <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <span data-i18n="profile_menu_password">கடவுச்சொல் மாற்று</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item danger" id="menuLogout">
+                <svg class="item-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                <span data-i18n="profile_menu_logout">வெளியேறு</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </header>
+
+      <!-- ==========================================================================
+           FREE LIMITS & CREDITS HERO BANNER
+           ========================================================================== -->
+      <section class="page-hero-banner">
+        <div class="page-title-group">
+          <h1 class="page-main-heading" id="pageHeading" data-i18n="page_limits_title">இலவச வரம்புகள் &amp; கிரெடிட்கள்</h1>
+          <p class="page-subheading" id="pageSubheading" data-i18n="page_limits_subtitle">பயனர்களுக்கான இலவச பயன்பாட்டு வரம்புகள் மற்றும் கிரெடிட்களை நிர்வகிக்கவும்.</p>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 3: SUMMARY CARDS (4 Cards)
+           ========================================================================== -->
+      <div class="credit-summary-grid">
+        
+        <!-- 1. Total Free Credits -->
+        <div class="credit-summary-card">
+          <div class="credit-summary-icon-box blue">
+            <span>💎</span>
+          </div>
+          <div class="credit-summary-info">
+            <span class="credit-summary-val" id="sumTotalCredits">100</span>
+            <span class="credit-summary-lbl" data-i18n="summary_total_free_credits">மொத்த இலவச கிரெடிட்கள்</span>
+            <span class="credit-summary-sub" data-i18n="summary_desc_total">பயனருக்கான தினசரி ஒதுக்கீடு</span>
+          </div>
+        </div>
+
+        <!-- 2. Credits Used Today -->
+        <div class="credit-summary-card">
+          <div class="credit-summary-icon-box orange">
+            <span>⚡</span>
+          </div>
+          <div class="credit-summary-info">
+            <span class="credit-summary-val" id="sumCreditsUsed">34</span>
+            <span class="credit-summary-lbl" data-i18n="summary_credits_used_today">இன்று பயன்படுத்தப்பட்ட கிரெடிட்கள்</span>
+            <span class="credit-summary-sub" data-i18n="summary_desc_used">இன்றைய மொத்த ஒதுக்கீட்டில் 34%</span>
+          </div>
+        </div>
+
+        <!-- 3. Credits Remaining -->
+        <div class="credit-summary-card">
+          <div class="credit-summary-icon-box green">
+            <span>🛡️</span>
+          </div>
+          <div class="credit-summary-info">
+            <span class="credit-summary-val" id="sumCreditsRemaining">66</span>
+            <span class="credit-summary-lbl" data-i18n="summary_credits_remaining">மீதமுள்ள கிரெடிட்கள்</span>
+            <span class="credit-summary-sub" data-i18n="summary_desc_remaining">அனைத்து பயனர்களுக்கும் உள்ளது</span>
+          </div>
+        </div>
+
+        <!-- 4. Users Using Free Credits -->
+        <div class="credit-summary-card">
+          <div class="credit-summary-icon-box purple">
+            <span>👥</span>
+          </div>
+          <div class="credit-summary-info">
+            <span class="credit-summary-val" id="sumActiveUsers">128</span>
+            <span class="credit-summary-lbl" data-i18n="summary_users_free_credits">இலவச கிரெடிட் பயன்படுத்தும் பயனர்கள்</span>
+            <span class="credit-summary-sub" data-i18n="summary_desc_users">+12 புதிய பயனர்கள் இன்று</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ==========================================================================
+           SECTION 4: FREE LIMIT DETAILS (6 Detailed Cards)
+           ========================================================================== -->
+      <section class="page-card" style="margin-bottom: 24px;">
+        <div class="card-header-bar">
+          <div class="card-title-text">
+            <span>📊</span> <span data-i18n="section_free_limits_title">கருவிகள் வாரியான இலவச வரம்புகள்</span>
+          </div>
+        </div>
+
+        <div class="free-limits-grid" id="freeLimitsCardsContainer">
+          
+          <!-- Card 1: AI Chat -->
+          <div class="limit-card" id="limitCard-chat">
+            <div class="limit-card-header">
+              <div class="limit-card-title-group">
+                <div class="limit-tool-icon blue">💬</div>
+                <span class="limit-tool-name" data-i18n="tool_chat_title">AI உரையாடல்</span>
+              </div>
+              <span class="limit-status-pill available" id="statusPill-chat">
+                <span class="limit-status-dot"></span> <span class="status-text" data-i18n="status_available">கிடைக்கக்கூடியது</span>
+              </span>
+            </div>
+            <div class="limit-progress-section">
+              <div class="limit-progress-bar">
+                <div class="limit-progress-fill" id="progressFill-chat" style="width: 0%;"></div>
+              </div>
+              <div class="limit-progress-labels">
+                <span><span data-i18n="card_credits_used">பயன்படுத்தப்பட்ட கிரெடிட்கள்</span>: <strong id="progressUsedTxt-chat">0</strong></span>
+                <span id="progressPct-chat">0%</span>
+              </div>
+            </div>
+            <div class="limit-metrics-grid">
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_free_limit">இலவச வரம்பு</span>
+                <span class="limit-metric-val" id="limitVal-chat" data-i18n="limit_unit_messages_day">20 செய்திகள்/நாள்</span>
+              </div>
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_credits_used">பயன்படுத்தியவை</span>
+                <span class="limit-metric-val" id="usedVal-chat">0 / 20</span>
+              </div>
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_remaining_credits">மீதமுள்ளவை</span>
+                <span class="limit-metric-val" id="remainVal-chat" style="color: #16a34a;">20</span>
+              </div>
+            </div>
+            <button type="button" class="btn-manage-limit" onclick="openManageLimitModal('chat')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              <span data-i18n="btn_manage_limit">வரம்பை நிர்வகி</span>
+            </button>
+          </div>
+
+          <!-- Card 2: Image Generation -->
+          <div class="limit-card" id="limitCard-image">
+            <div class="limit-card-header">
+              <div class="limit-card-title-group">
+                <div class="limit-tool-icon green">🎨</div>
+                <span class="limit-tool-name" data-i18n="tool_image_title">பட உருவாக்கம்</span>
+              </div>
+              <span class="limit-status-pill available" id="statusPill-image">
+                <span class="limit-status-dot"></span> <span class="status-text" data-i18n="status_available">கிடைக்கக்கூடியது</span>
+              </span>
+            </div>
+            <div class="limit-progress-section">
+              <div class="limit-progress-bar">
+                <div class="limit-progress-fill green-fill" id="progressFill-image" style="width: 0%;"></div>
+              </div>
+              <div class="limit-progress-labels">
+                <span><span data-i18n="card_credits_used">பயன்படுத்தப்பட்ட கிரெடிட்கள்</span>: <strong id="progressUsedTxt-image">0</strong></span>
+                <span id="progressPct-image">0%</span>
+              </div>
+            </div>
+            <div class="limit-metrics-grid">
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_free_limit">இலவச வரம்பு</span>
+                <span class="limit-metric-val" id="limitVal-image" data-i18n="limit_unit_images_day">5 படங்கள்/நாள்</span>
+              </div>
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_credits_used">பயன்படுத்தியவை</span>
+                <span class="limit-metric-val" id="usedVal-image">0 / 5</span>
+              </div>
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_remaining_credits">மீதமுள்ளவை</span>
+                <span class="limit-metric-val" id="remainVal-image" style="color: #16a34a;">5</span>
+              </div>
+            </div>
+            <button type="button" class="btn-manage-limit" onclick="openManageLimitModal('image')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              <span data-i18n="btn_manage_limit">வரம்பை நிர்வகி</span>
+            </button>
+          </div>
+
+          <!-- Card 3: Video Generation -->
+          <div class="limit-card" id="limitCard-video">
+            <div class="limit-card-header">
+              <div class="limit-card-title-group">
+                <div class="limit-tool-icon purple">🎬</div>
+                <span class="limit-tool-name" data-i18n="tool_video_title">காணொளி உருவாக்கம்</span>
+              </div>
+              <span class="limit-status-pill available" id="statusPill-video">
+                <span class="limit-status-dot"></span> <span class="status-text" data-i18n="status_available">கிடைக்கக்கூடியது</span>
+              </span>
+            </div>
+            <div class="limit-progress-section">
+              <div class="limit-progress-bar">
+                <div class="limit-progress-fill" id="progressFill-video" style="width: 0%; background: linear-gradient(90deg, #a855f7, #7c3aed);"></div>
+              </div>
+              <div class="limit-progress-labels">
+                <span><span data-i18n="card_credits_used">பயன்படுத்தப்பட்ட கிரெடிட்கள்</span>: <strong id="progressUsedTxt-video">0</strong></span>
+                <span id="progressPct-video">0%</span>
+              </div>
+            </div>
+            <div class="limit-metrics-grid">
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_free_limit">இலவச வரம்பு</span>
+                <span class="limit-metric-val" id="limitVal-video" data-i18n="limit_unit_videos_day">2 காணொளிகள்/நாள்</span>
+              </div>
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_credits_used">பயன்படுத்தியவை</span>
+                <span class="limit-metric-val" id="usedVal-video">0 / 2</span>
+              </div>
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_remaining_credits">மீதமுள்ளவை</span>
+                <span class="limit-metric-val" id="remainVal-video" style="color: #16a34a;">2</span>
+              </div>
+            </div>
+            <button type="button" class="btn-manage-limit" onclick="openManageLimitModal('video')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              <span data-i18n="btn_manage_limit">வரம்பை நிர்வகி</span>
+            </button>
+          </div>
+
+          <!-- Card 4: Audio Generation -->
+          <div class="limit-card" id="limitCard-audio">
+            <div class="limit-card-header">
+              <div class="limit-card-title-group">
+                <div class="limit-tool-icon cyan">🎙️</div>
+                <span class="limit-tool-name" data-i18n="tool_audio_title">ஒலி உருவாக்கம்</span>
+              </div>
+              <span class="limit-status-pill available" id="statusPill-audio">
+                <span class="limit-status-dot"></span> <span class="status-text" data-i18n="status_available">கிடைக்கக்கூடியது</span>
+              </span>
+            </div>
+            <div class="limit-progress-section">
+              <div class="limit-progress-bar">
+                <div class="limit-progress-fill" id="progressFill-audio" style="width: 0%; background: linear-gradient(90deg, #06b6d4, #0284c7);"></div>
+              </div>
+              <div class="limit-progress-labels">
+                <span><span data-i18n="card_credits_used">பயன்படுத்தப்பட்ட கிரெடிட்கள்</span>: <strong id="progressUsedTxt-audio">0</strong></span>
+                <span id="progressPct-audio">0%</span>
+              </div>
+            </div>
+            <div class="limit-metrics-grid">
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_free_limit">இலவச வரம்பு</span>
+                <span class="limit-metric-val" id="limitVal-audio" data-i18n="limit_unit_minutes_day">10 நிமிடங்கள்/நாள்</span>
+              </div>
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_credits_used">பயன்படுத்தியவை</span>
+                <span class="limit-metric-val" id="usedVal-audio">0 / 10</span>
+              </div>
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_remaining_credits">மீதமுள்ளவை</span>
+                <span class="limit-metric-val" id="remainVal-audio" style="color: #16a34a;">10</span>
+              </div>
+            </div>
+            <button type="button" class="btn-manage-limit" onclick="openManageLimitModal('audio')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              <span data-i18n="btn_manage_limit">வரம்பை நிர்வகி</span>
+            </button>
+          </div>
+
+          <!-- Card 5: AI Code Tools -->
+          <div class="limit-card" id="limitCard-code">
+            <div class="limit-card-header">
+              <div class="limit-card-title-group">
+                <div class="limit-tool-icon orange">💻</div>
+                <span class="limit-tool-name" data-i18n="tool_code_title">AI நிரலாக்கக் கருவிகள்</span>
+              </div>
+              <span class="limit-status-pill available" id="statusPill-code">
+                <span class="limit-status-dot"></span> <span class="status-text" data-i18n="status_available">கிடைக்கக்கூடியது</span>
+              </span>
+            </div>
+            <div class="limit-progress-section">
+              <div class="limit-progress-bar">
+                <div class="limit-progress-fill" id="progressFill-code" style="width: 0%; background: linear-gradient(90deg, #f97316, #ea580c);"></div>
+              </div>
+              <div class="limit-progress-labels">
+                <span><span data-i18n="card_credits_used">பயன்படுத்தப்பட்ட கிரெடிட்கள்</span>: <strong id="progressUsedTxt-code">0</strong></span>
+                <span id="progressPct-code">0%</span>
+              </div>
+            </div>
+            <div class="limit-metrics-grid">
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_free_limit">இலவச வரம்பு</span>
+                <span class="limit-metric-val" id="limitVal-code" data-i18n="limit_unit_requests_day">10 கோரிக்கைகள்/நாள்</span>
+              </div>
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_credits_used">பயன்படுத்தியவை</span>
+                <span class="limit-metric-val" id="usedVal-code">0 / 10</span>
+              </div>
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_remaining_credits">மீதமுள்ளவை</span>
+                <span class="limit-metric-val" id="remainVal-code" style="color: #16a34a;">10</span>
+              </div>
+            </div>
+            <button type="button" class="btn-manage-limit" onclick="openManageLimitModal('code')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              <span data-i18n="btn_manage_limit">வரம்பை நிர்வகி</span>
+            </button>
+          </div>
+
+          <!-- Card 6: Content Generation -->
+          <div class="limit-card" id="limitCard-content">
+            <div class="limit-card-header">
+              <div class="limit-card-title-group">
+                <div class="limit-tool-icon pink">📝</div>
+                <span class="limit-tool-name" data-i18n="tool_content_title">உள்ளடக்க உருவாக்கம்</span>
+              </div>
+              <span class="limit-status-pill available" id="statusPill-content">
+                <span class="limit-status-dot"></span> <span class="status-text" data-i18n="status_available">கிடைக்கக்கூடியது</span>
+              </span>
+            </div>
+            <div class="limit-progress-section">
+              <div class="limit-progress-bar">
+                <div class="limit-progress-fill" id="progressFill-content" style="width: 0%; background: linear-gradient(90deg, #ec4899, #be185d);"></div>
+              </div>
+              <div class="limit-progress-labels">
+                <span><span data-i18n="card_credits_used">பயன்படுத்தப்பட்ட கிரெடிட்கள்</span>: <strong id="progressUsedTxt-content">0</strong></span>
+                <span id="progressPct-content">0%</span>
+              </div>
+            </div>
+            <div class="limit-metrics-grid">
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_free_limit">இலவச வரம்பு</span>
+                <span class="limit-metric-val" id="limitVal-content" data-i18n="limit_unit_content_day">15 கோரிக்கைகள்/நாள்</span>
+              </div>
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_credits_used">பயன்படுத்தியவை</span>
+                <span class="limit-metric-val" id="usedVal-content">0 / 15</span>
+              </div>
+              <div class="limit-metric-box">
+                <span class="limit-metric-label" data-i18n="card_remaining_credits">மீதமுள்ளவை</span>
+                <span class="limit-metric-val" id="remainVal-content" style="color: #16a34a;">15</span>
+              </div>
+            </div>
+            <button type="button" class="btn-manage-limit" onclick="openManageLimitModal('content')">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+              <span data-i18n="btn_manage_limit">வரம்பை நிர்வகி</span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 6: CREDIT SETTINGS
+           ========================================================================== -->
+      <section class="page-card" style="margin-bottom: 24px;">
+        <div class="card-header-bar">
+          <div class="card-title-text">
+            <span>⚙️</span> <span data-i18n="section_credit_settings_title">கிரெடிட் அமைப்புகள்</span>
+          </div>
+        </div>
+
+        <form id="creditSettingsForm" onsubmit="handleSaveCreditSettings(event)">
+          <div class="credit-settings-grid">
+            
+            <div class="credit-setting-item">
+              <label for="settingDailyCredits" data-i18n="label_daily_free_credits">தினசரி இலவச கிரெடிட்கள்</label>
+              <input type="number" id="settingDailyCredits" class="credit-setting-input" min="1" max="1000" value="100" required>
+            </div>
+
+            <div class="credit-setting-item">
+              <label for="settingMonthlyCredits" data-i18n="label_monthly_free_credits">மாதாந்திர இலவச கிரெடிட்கள்</label>
+              <input type="number" id="settingMonthlyCredits" class="credit-setting-input" min="1" max="30000" value="3000" required>
+            </div>
+
+            <div class="credit-toggle-row">
+              <div class="credit-toggle-info">
+                <span class="credit-toggle-title" data-i18n="label_enable_free_credits_toggle">இலவச கிரெடிட்களை இயக்கு</span>
+                <span class="credit-toggle-desc" data-i18n="desc_enable_free_credits">அனைத்து பதிவுசெய்த பயனர்களுக்கும் தினசரி இலவச கிரெடிட்டுகளை வழங்கவும்</span>
+              </div>
+              <label class="switch-label">
+                <input type="checkbox" id="settingEnableCreditsToggle" checked>
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+
+            <div class="credit-toggle-row">
+              <div class="credit-toggle-info">
+                <span class="credit-toggle-title" data-i18n="label_rollover_toggle">கிரெடிட் ரோல்ஓவர் அனுமதி</span>
+                <span class="credit-toggle-desc" data-i18n="desc_rollover">பயன்படுத்தப்படாத இலவச கிரெடிட்களை அடுத்த நாளுக்கு எடுத்துச் செல்ல அனுமதிக்கவும்</span>
+              </div>
+              <label class="switch-label">
+                <input type="checkbox" id="settingRolloverToggle">
+                <span class="switch-slider"></span>
+              </label>
+            </div>
+
+          </div>
+
+          <div class="credit-settings-actions">
+            <button type="button" class="btn-secondary-custom" id="btnResetCredits" onclick="handleResetCredits()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 2v6h6M21.5 22v-6h-6"/><path d="M22 11.5A10 10 0 0 0 3.2 7.2L2.5 8M2 12.5a10 10 0 0 0 18.8 4.3l.7-.8"/></svg>
+              <span data-i18n="btn_reset_credits">கிரெடிட்களை மீட்டமை</span>
+            </button>
+            <button type="submit" class="btn-primary-custom" id="btnSaveCreditSettings">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span data-i18n="btn_save_settings">அமைப்புகளைச் சேமி</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 7: RECENT CREDIT ACTIVITY TABLE
+           ========================================================================== -->
+      <section class="page-card">
+        <div class="card-header-bar">
+          <div class="card-title-text">
+            <span>🕒</span> <span data-i18n="section_recent_activity_title">சமீபத்திய கிரெடிட் செயல்பாடுகள்</span>
+          </div>
+        </div>
+
+        <div class="data-table-wrapper">
+          <table class="thamili-table" id="recentCreditActivityTable">
+            <thead>
+              <tr>
+                <th data-i18n="th_user">பயனர்</th>
+                <th data-i18n="th_tool">கருவி</th>
+                <th data-i18n="th_credits_used">பயன்படுத்திய கிரெடிட்கள்</th>
+                <th data-i18n="th_date">தேதி &amp; நேரம்</th>
+                <th data-i18n="th_status">நிலை</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="table-user-cell">
+                    <div class="table-user-avatar" style="background: linear-gradient(135deg, #2563eb, #38bdf8);">KR</div>
+                    <div class="table-user-info">
+                      <span class="table-user-name">Kavin Raj</span>
+                      <span class="table-user-email">kavin.raj@example.com</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="table-tool-badge"><span>💬</span> <span data-i18n="tool_chat_title">AI உரையாடல்</span></span>
+                </td>
+                <td><span class="table-credit-badge">1 Credit</span></td>
+                <td style="color: #64748b; font-size: 13px;">22 Sep 2026, 06:45 PM</td>
+                <td><span class="status-pill active"><span class="status-dot"></span> <span data-i18n="status_completed">நிறைவுற்றது</span></span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user-cell">
+                    <div class="table-user-avatar" style="background: linear-gradient(135deg, #10b981, #059669);">PS</div>
+                    <div class="table-user-info">
+                      <span class="table-user-name">Priya Sundaram</span>
+                      <span class="table-user-email">priya.s@thamili.ai</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="table-tool-badge"><span>🎨</span> <span data-i18n="tool_image_title">பட உருவாக்கம்</span></span>
+                </td>
+                <td><span class="table-credit-badge">2 Credits</span></td>
+                <td style="color: #64748b; font-size: 13px;">22 Sep 2026, 05:30 PM</td>
+                <td><span class="status-pill active"><span class="status-dot"></span> <span data-i18n="status_completed">நிறைவுற்றது</span></span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user-cell">
+                    <div class="table-user-avatar" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9);">MS</div>
+                    <div class="table-user-info">
+                      <span class="table-user-name">Murugan S</span>
+                      <span class="table-user-email">murugan.s@example.com</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="table-tool-badge"><span>🎬</span> <span data-i18n="tool_video_title">காணொளி உருவாக்கம்</span></span>
+                </td>
+                <td><span class="table-credit-badge">5 Credits</span></td>
+                <td style="color: #64748b; font-size: 13px;">22 Sep 2026, 04:15 PM</td>
+                <td><span class="status-pill active"><span class="status-dot"></span> <span data-i18n="status_completed">நிறைவுற்றது</span></span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user-cell">
+                    <div class="table-user-avatar" style="background: linear-gradient(135deg, #f97316, #c2410c);">AR</div>
+                    <div class="table-user-info">
+                      <span class="table-user-name">Ananya R</span>
+                      <span class="table-user-email">ananya.r@example.com</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="table-tool-badge"><span>💻</span> <span data-i18n="tool_code_title">AI நிரலாக்கக் கருவிகள்</span></span>
+                </td>
+                <td><span class="table-credit-badge">2 Credits</span></td>
+                <td style="color: #64748b; font-size: 13px;">22 Sep 2026, 03:00 PM</td>
+                <td><span class="status-pill active"><span class="status-dot"></span> <span data-i18n="status_completed">நிறைவுற்றது</span></span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user-cell">
+                    <div class="table-user-avatar" style="background: linear-gradient(135deg, #06b6d4, #0e7490);">KV</div>
+                    <div class="table-user-info">
+                      <span class="table-user-name">Karthik V</span>
+                      <span class="table-user-email">karthik.v@example.com</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="table-tool-badge"><span>🎙️</span> <span data-i18n="tool_audio_title">ஒலி உருவாக்கம்</span></span>
+                </td>
+                <td><span class="table-credit-badge">1 Credit</span></td>
+                <td style="color: #64748b; font-size: 13px;">22 Sep 2026, 01:20 PM</td>
+                <td><span class="status-pill active"><span class="status-dot"></span> <span data-i18n="status_completed">நிறைவுற்றது</span></span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user-cell">
+                    <div class="table-user-avatar" style="background: linear-gradient(135deg, #ec4899, #be185d);">DN</div>
+                    <div class="table-user-info">
+                      <span class="table-user-name">Divya N</span>
+                      <span class="table-user-email">divya.n@example.com</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="table-tool-badge"><span>📝</span> <span data-i18n="tool_content_title">உள்ளடக்க உருவாக்கம்</span></span>
+                </td>
+                <td><span class="table-credit-badge">1 Credit</span></td>
+                <td style="color: #64748b; font-size: 13px;">22 Sep 2026, 11:10 AM</td>
+                <td><span class="status-pill active"><span class="status-dot"></span> <span data-i18n="status_completed">நிறைவுற்றது</span></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 1: MANAGE LIMIT MODAL (SECTION 5)
+       ========================================================================== -->
+  <div class="modal-overlay" id="manageLimitModal">
+    <div class="modal-dialog" style="max-width: 480px;">
+      <div class="modal-header">
+        <div>
+          <h3 class="modal-title" id="manageModalTitle" data-i18n="modal_manage_limit_title">இலவச வரம்பை மாற்று</h3>
+          <p style="font-size: 12px; color: #64748b; margin-top: 2px;" data-i18n="modal_manage_limit_subtitle">தேர்ந்தெடுக்கப்பட்ட AI கருவிக்கான பயன்பாட்டு ஒதுக்கீட்டை மாற்றியமைக்கவும்</p>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="closeModal('manageLimitModal')">&times;</button>
+      </div>
+      <form id="manageLimitForm" onsubmit="handleSaveLimitChanges(event)">
+        <input type="hidden" id="manageToolId" value="">
+        <div class="modal-body" style="display: flex; flex-direction: column; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label" data-i18n="label_tool_name">AI கருவி பெயர்</label>
+            <input type="text" class="form-input" id="manageToolNameInput" readonly style="background: #f8fafc; font-weight: 600;">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="form-group">
+              <label class="form-label" data-i18n="label_daily_limit">தினசரி இலவச வரம்பு</label>
+              <input type="number" class="form-input" id="manageDailyLimitInput" min="0" max="10000" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="label_monthly_limit">மாதாந்திர இலவச வரம்பு</label>
+              <input type="number" class="form-input" id="manageMonthlyLimitInput" min="0" max="300000" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="label_credit_cost">கிரெடிட் கட்டணம் (ஒரு பயன்பாட்டிற்கு)</label>
+            <input type="number" class="form-input" id="manageCreditCostInput" min="0" max="100" required>
+          </div>
+          <div class="credit-toggle-row" style="margin-top: 4px;">
+            <div class="credit-toggle-info">
+              <span class="credit-toggle-title" data-i18n="label_enable_free_limit">இலவச வரம்பை இயக்கு</span>
+              <span class="credit-toggle-desc" data-i18n="hint_enable_limit">இயக்கப்பட்டால், பயனர்கள் தினசரி இலவச ஒதுக்கீட்டை அணுகலாம்</span>
+            </div>
+            <label class="switch-label">
+              <input type="checkbox" id="manageEnableLimitToggle" checked>
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-profile-logout" onclick="closeModal('manageLimitModal')" data-i18n="btn_cancel">ரத்துசெய்</button>
+          <button type="submit" class="btn-primary-custom" data-i18n="btn_save_changes">மாற்றங்களைச் சேமி</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       STANDARD ADMIN PROFILE MODALS
+       ========================================================================== -->
+  <div class="modal-overlay" id="profileModal">
+    <div class="modal-dialog admin-profile-dialog">
+      <div class="modal-header">
+        <div class="modal-title-with-badge">
+          <h3 class="modal-title" data-i18n="profile_modal_title">நிர்வாகி சுயவிவரம்</h3>
+          <span class="admin-badge-pill" data-i18n="profile_role_badge">முதன்மை நிர்வாகி</span>
+        </div>
+        <button class="modal-close-btn" data-close-modal="profileModal">&times;</button>
+      </div>
+      <div class="modal-body admin-profile-body">
+        <div class="admin-profile-layout">
+          <div class="admin-summary-col">
+            <div class="admin-summary-avatar-wrap">
+              <img src="assets/images/robot-avatar.jpg" alt="Admin Avatar" class="admin-summary-avatar">
+              <span class="admin-status-bubble" title="Active"></span>
+            </div>
+            <h4 class="admin-summary-name admin-display-name">Arun Kumar</h4>
+            <p class="admin-summary-email" id="profileDisplayEmail">arun@example.com</p>
+            <div class="admin-spec-list">
+              <div class="admin-spec-row">
+                <div class="admin-spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+                <div class="admin-spec-text"><span class="admin-spec-label" data-i18n="label_admin_id">Admin ID</span><span class="admin-spec-val" id="profileAdminId">ADM001</span></div>
+              </div>
+              <div class="admin-spec-row">
+                <div class="admin-spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                <div class="admin-spec-text"><span class="admin-spec-label" data-i18n="label_role">Role</span><span class="admin-spec-val" id="profileRole" data-i18n="profile_role_badge">Administrator</span></div>
+              </div>
+              <div class="admin-spec-row">
+                <div class="admin-spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
+                <div class="admin-spec-text"><span class="admin-spec-label" data-i18n="label_last_login">Last Login</span><span class="admin-spec-val" id="profileLastLogin">22 Sep 2025, 10:24 AM</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="admin-details-col">
+            <div class="admin-info-section">
+              <div class="admin-section-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span data-i18n="profile_personal_info">Personal Information</span>
+              </div>
+              <div class="admin-info-rows">
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span data-i18n="label_fullname">Full Name</span></span><span class="admin-row-val admin-display-name">Arun Kumar</span></div>
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg><span data-i18n="label_username">Username</span></span><span class="admin-row-val" id="profileUsernameVal">arun@admin</span></div>
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span data-i18n="label_email">Email Address</span></span><span class="admin-row-val" id="profileDisplayEmail">arun@example.com</span></div>
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span data-i18n="label_phone">Phone Number</span></span><span class="admin-row-val" id="profilePhoneVal">+91 98765 43210</span></div>
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg><span data-i18n="label_dob">Date of Birth</span></span><span class="admin-row-val" id="profileDobVal">15 Apr 1995</span></div>
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg><span data-i18n="label_gender">Gender</span></span><span class="admin-row-val" id="profileGenderVal" data-i18n="gender_male">Male</span></div>
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg><span data-i18n="label_bio">Biography</span></span><span class="admin-row-val" id="profileBioVal">Lead Administrator for Thamili AI Platform.</span></div>
+              </div>
+            </div>
+            <div class="admin-info-section">
+              <div class="admin-section-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span data-i18n="profile_account_details">Account Details</span>
+              </div>
+              <div class="admin-info-rows">
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg><span data-i18n="label_account_created">Account Created</span></span><span class="admin-row-val" id="profileCreatedVal">01 Jan 2025, 09:12 AM</span></div>
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg><span data-i18n="profile_status">Account Status</span></span><span class="admin-row-val" id="profileStatusVal"><span class="admin-status-pill"><span class="admin-status-dot"></span><span data-i18n="profile_status_active">Active</span></span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="admin-profile-footer">
+        <button type="button" class="btn-profile-edit" onclick="closeModal('profileModal'); openModal('editProfileModal');">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+          <span data-i18n="profile_menu_edit">Edit Profile</span>
+        </button>
+        <button type="button" class="btn-profile-pwd" onclick="closeModal('profileModal'); openModal('changePasswordModal');">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <span data-i18n="profile_menu_password">Change Password</span>
+        </button>
+        <button type="button" class="btn-profile-logout" onclick="closeModal('profileModal'); openModal('logoutModal');">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span data-i18n="profile_menu_logout">Logout</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Profile Modal -->
+  <div class="modal-overlay" id="editProfileModal">
+    <div class="modal-dialog edit-profile-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" data-i18n="profile_menu_edit">Edit Profile</h3>
+        <button class="modal-close-btn" data-close-modal="editProfileModal">&times;</button>
+      </div>
+      <form id="editProfileForm">
+        <div class="modal-body edit-profile-body">
+          <div class="edit-avatar-section">
+            <div class="edit-avatar-preview-wrap">
+              <img src="assets/images/robot-avatar.jpg" alt="Preview" id="editAvatarPreview" class="edit-avatar-img">
+            </div>
+            <div class="edit-avatar-info">
+              <span class="edit-avatar-title" data-i18n="label_fullname">Profile Avatar</span>
+              <span class="edit-avatar-desc" data-i18n="avatar_help">System Admin Avatar</span>
+            </div>
+          </div>
+
+          <div class="edit-form-grid">
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editFullName">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span data-i18n="label_fullname">Full Name</span>
+              </label>
+              <input type="text" class="form-input-custom" id="editFullName" required>
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editUsername">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                <span data-i18n="label_username">Username</span>
+              </label>
+              <input type="text" class="form-input-custom" id="editUsername" required>
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editEmail">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span data-i18n="label_email">Email Address</span>
+              </label>
+              <input type="email" class="form-input-custom" id="editEmail" required>
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editPhone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span data-i18n="label_phone">Phone Number</span>
+              </label>
+              <input type="tel" class="form-input-custom" id="editPhone" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number">
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editDob">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span data-i18n="label_dob">Date of Birth</span>
+              </label>
+              <input type="date" class="form-input-custom" id="editDob">
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editGender">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                <span data-i18n="label_gender">Gender</span>
+              </label>
+              <select class="form-select-custom" id="editGender">
+                <option value="Male" data-i18n="gender_male">Male</option>
+                <option value="Female" data-i18n="gender_female">Female</option>
+                <option value="Prefer not to say" data-i18n="gender_other">Prefer not to say</option>
+              </select>
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editAdminId">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span data-i18n="label_admin_id">Admin ID</span>
+                <span class="form-readonly-tag" data-i18n="readonly_tag">System Managed</span>
+              </label>
+              <input type="text" class="form-input-custom" id="editAdminId" value="ADM001" readonly>
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editRole">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span data-i18n="label_role">Role</span>
+                <span class="form-readonly-tag" data-i18n="readonly_tag">System Managed</span>
+              </label>
+              <input type="text" class="form-input-custom" id="editRole" value="Administrator" readonly>
+            </div>
+
+            <div class="form-group-custom edit-form-full">
+              <label class="form-label-custom" for="editBio">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span data-i18n="label_bio">Biography</span>
+              </label>
+              <textarea class="form-textarea-custom" rows="2" id="editBio" placeholder="Enter biography..."></textarea>
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editCreated">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span data-i18n="label_account_created">Account Created</span>
+                <span class="form-readonly-tag" data-i18n="readonly_tag">System Managed</span>
+              </label>
+              <input type="text" class="form-input-custom" id="editCreated" value="01 Jan 2025, 09:12 AM" readonly>
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editLastLogin">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span data-i18n="label_last_login">Last Login</span>
+                <span class="form-readonly-tag" data-i18n="readonly_tag">System Managed</span>
+              </label>
+              <input type="text" class="form-input-custom" id="editLastLogin" value="22 Sep 2025, 10:24 AM" readonly>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-profile-footer">
+          <button type="submit" class="btn-profile-edit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span data-i18n="btn_save_changes">Save Changes</span>
+          </button>
+          <button type="button" class="btn-profile-logout" data-close-modal="editProfileModal" data-i18n="btn_cancel">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Change Password Modal -->
+  <div class="modal-overlay" id="changePasswordModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" data-i18n="profile_menu_password">கடவுச்சொல் மாற்று</h3>
+        <button class="modal-close-btn" data-close-modal="changePasswordModal">&times;</button>
+      </div>
+      <form id="changePasswordForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" data-i18n="label_new_pwd">புதிய கடவுச்சொல்</label>
+            <input type="password" class="form-input" id="newPwd" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="label_confirm_pwd">புதிய கடவுச்சொல்லை உறுதி செய்</label>
+            <input type="password" class="form-input" id="confirmPwd" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary" data-i18n="btn_save_changes">சேமிக்கவும்</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Logout Modal -->
+  <div class="modal-overlay" id="logoutModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" data-i18n="profile_menu_logout">வெளியேற உறுதிப்படுத்தவும்</h3>
+        <button class="modal-close-btn" data-close-modal="logoutModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p data-i18n="modal_logout_desc">நிர்வாக அமர்விலிருந்து வெளியேற விரும்புகிறீர்களா?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-danger" id="btnConfirmLogout" data-i18n="profile_menu_logout">வெளியேறு</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    /**
+     * Free Limits & Credits Data Model & Controller
+     */
+    const DEFAULT_LIMITS_DATA = {
+      chat: {
+        id: 'chat',
+        nameTa: 'AI உரையாடல்',
+        nameEn: 'AI Chat',
+        unitTa: 'செய்திகள்/நாள்',
+        unitEn: 'messages/day',
+        dailyLimit: 20,
+        monthlyLimit: 600,
+        creditCost: 1,
+        creditsUsed: 0,
+        enabled: true
+      },
+      image: {
+        id: 'image',
+        nameTa: 'பட உருவாக்கம்',
+        nameEn: 'Image Generation',
+        unitTa: 'படங்கள்/நாள்',
+        unitEn: 'images/day',
+        dailyLimit: 5,
+        monthlyLimit: 150,
+        creditCost: 2,
+        creditsUsed: 0,
+        enabled: true
+      },
+      video: {
+        id: 'video',
+        nameTa: 'காணொளி உருவாக்கம்',
+        nameEn: 'Video Generation',
+        unitTa: 'காணொளிகள்/நாள்',
+        unitEn: 'videos/day',
+        dailyLimit: 2,
+        monthlyLimit: 60,
+        creditCost: 5,
+        creditsUsed: 0,
+        enabled: true
+      },
+      audio: {
+        id: 'audio',
+        nameTa: 'ஒலி உருவாக்கம்',
+        nameEn: 'Audio Generation',
+        unitTa: 'நிமிடங்கள்/நாள்',
+        unitEn: 'minutes/day',
+        dailyLimit: 10,
+        monthlyLimit: 300,
+        creditCost: 1,
+        creditsUsed: 0,
+        enabled: true
+      },
+      code: {
+        id: 'code',
+        nameTa: 'AI நிரலாக்கக் கருவிகள்',
+        nameEn: 'AI Code Tools',
+        unitTa: 'கோரிக்கைகள்/நாள்',
+        unitEn: 'requests/day',
+        dailyLimit: 10,
+        monthlyLimit: 300,
+        creditCost: 2,
+        creditsUsed: 0,
+        enabled: true
+      },
+      content: {
+        id: 'content',
+        nameTa: 'உள்ளடக்க உருவாக்கம்',
+        nameEn: 'Content Generation',
+        unitTa: 'கோரிக்கைகள்/நாள்',
+        unitEn: 'requests/day',
+        dailyLimit: 15,
+        monthlyLimit: 450,
+        creditCost: 1,
+        creditsUsed: 0,
+        enabled: true
+      }
+    };
+
+    function getLimitsState() {
+      try {
+        const saved = localStorage.getItem('thamili_free_limits_state');
+        if (saved) return JSON.parse(saved);
+      } catch(e) {}
+      return DEFAULT_LIMITS_DATA;
+    }
+
+    function saveLimitsState(state) {
+      localStorage.setItem('thamili_free_limits_state', JSON.stringify(state));
+      renderLimitsCards();
+    }
+
+    function renderLimitsCards() {
+      const state = getLimitsState();
+      const curLang = (window.i18n && window.i18n.currentLang) || 'ta';
+
+      Object.keys(state).forEach(key => {
+        const item = state[key];
+        const remaining = Math.max(0, item.dailyLimit - item.creditsUsed);
+        const pct = item.dailyLimit > 0 ? Math.min(100, Math.round((item.creditsUsed / item.dailyLimit) * 100)) : 0;
+        const unit = curLang === 'ta' ? item.unitTa : item.unitEn;
+
+        // Limit val
+        const limitEl = document.getElementById(`limitVal-${key}`);
+        if (limitEl) limitEl.textContent = `${item.dailyLimit} ${unit}`;
+
+        // Used val
+        const usedEl = document.getElementById(`usedVal-${key}`);
+        if (usedEl) usedEl.textContent = `${item.creditsUsed} / ${item.dailyLimit}`;
+
+        // Remaining val
+        const remainEl = document.getElementById(`remainVal-${key}`);
+        if (remainEl) {
+          remainEl.textContent = remaining;
+          remainEl.style.color = item.enabled ? '#16a34a' : '#94a3b8';
+        }
+
+        // Progress bar
+        const fillEl = document.getElementById(`progressFill-${key}`);
+        if (fillEl) fillEl.style.width = `${pct}%`;
+
+        const usedTxt = document.getElementById(`progressUsedTxt-${key}`);
+        if (usedTxt) usedTxt.textContent = item.creditsUsed;
+
+        const pctTxt = document.getElementById(`progressPct-${key}`);
+        if (pctTxt) pctTxt.textContent = `${pct}%`;
+
+        // Status pill
+        const statusPill = document.getElementById(`statusPill-${key}`);
+        if (statusPill) {
+          const statusTextEl = statusPill.querySelector('.status-text');
+          if (item.enabled) {
+            statusPill.className = 'limit-status-pill available';
+            if (statusTextEl) {
+              statusTextEl.setAttribute('data-i18n', 'status_available');
+              statusTextEl.textContent = window.i18n ? window.i18n.get('status_available') : 'Available';
+            }
+          } else {
+            statusPill.className = 'limit-status-pill disabled';
+            if (statusTextEl) {
+              statusTextEl.setAttribute('data-i18n', 'status_disabled');
+              statusTextEl.textContent = window.i18n ? window.i18n.get('status_disabled') : 'Disabled';
+            }
+          }
+        }
+      });
+    }
+
+    // Modal Controller
+    function openManageLimitModal(toolId) {
+      const state = getLimitsState();
+      const item = state[toolId];
+      if (!item) return;
+
+      const curLang = (window.i18n && window.i18n.currentLang) || 'ta';
+      document.getElementById('manageToolId').value = toolId;
+      document.getElementById('manageToolNameInput').value = curLang === 'ta' ? item.nameTa : item.nameEn;
+      document.getElementById('manageDailyLimitInput').value = item.dailyLimit;
+      document.getElementById('manageMonthlyLimitInput').value = item.monthlyLimit;
+      document.getElementById('manageCreditCostInput').value = item.creditCost;
+      document.getElementById('manageEnableLimitToggle').checked = item.enabled;
+
+      openModal('manageLimitModal');
+    }
+
+    function handleSaveLimitChanges(e) {
+      e.preventDefault();
+      const toolId = document.getElementById('manageToolId').value;
+      const state = getLimitsState();
+      if (!state[toolId]) return;
+
+      const dailyLimit = parseInt(document.getElementById('manageDailyLimitInput').value, 10) || 0;
+      const monthlyLimit = parseInt(document.getElementById('manageMonthlyLimitInput').value, 10) || 0;
+      const creditCost = parseInt(document.getElementById('manageCreditCostInput').value, 10) || 1;
+      const enabled = document.getElementById('manageEnableLimitToggle').checked;
+
+      state[toolId].dailyLimit = dailyLimit;
+      state[toolId].monthlyLimit = monthlyLimit;
+      state[toolId].creditCost = creditCost;
+      state[toolId].enabled = enabled;
+
+      saveLimitsState(state);
+      closeModal('manageLimitModal');
+
+      const msg = window.i18n ? window.i18n.get('toast_limit_updated') : 'Free limit updated successfully!';
+      if (window.showToast) window.showToast(msg);
+    }
+
+    function handleSaveCreditSettings(e) {
+      e.preventDefault();
+      const dailyCredits = document.getElementById('settingDailyCredits').value;
+      const monthlyCredits = document.getElementById('settingMonthlyCredits').value;
+      const enableToggle = document.getElementById('settingEnableCreditsToggle').checked;
+      const rolloverToggle = document.getElementById('settingRolloverToggle').checked;
+
+      const settings = { dailyCredits, monthlyCredits, enableToggle, rolloverToggle };
+      localStorage.setItem('thamili_credit_settings', JSON.stringify(settings));
+
+      document.getElementById('sumTotalCredits').textContent = dailyCredits;
+
+      const msg = window.i18n ? window.i18n.get('toast_settings_saved') : 'Credit settings saved successfully!';
+      if (window.showToast) window.showToast(msg);
+    }
+
+    function handleResetCredits() {
+      if (confirm('Are you sure you want to reset today\'s credit usage count? / இன்றைய கிரெடிட் பயன்பாட்டை மீட்டமைக்க விரும்புகிறீர்களா?')) {
+        const state = getLimitsState();
+        Object.keys(state).forEach(k => { state[k].creditsUsed = 0; });
+        saveLimitsState(state);
+
+        document.getElementById('sumCreditsUsed').textContent = '0';
+        document.getElementById('sumCreditsRemaining').textContent = document.getElementById('settingDailyCredits').value || '100';
+
+        const msg = window.i18n ? window.i18n.get('toast_credits_reset') : 'Today\'s credit usage reset!';
+        if (window.showToast) window.showToast(msg);
+      }
+    }
+
+    // Language change listener
+    window.addEventListener('thamili_lang_changed', () => {
+      renderLimitsCards();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Load saved credit settings if any
+      try {
+        const raw = localStorage.getItem('thamili_credit_settings');
+        if (raw) {
+          const s = JSON.parse(raw);
+          if (s.dailyCredits) {
+            document.getElementById('settingDailyCredits').value = s.dailyCredits;
+            document.getElementById('sumTotalCredits').textContent = s.dailyCredits;
+          }
+          if (s.monthlyCredits) document.getElementById('settingMonthlyCredits').value = s.monthlyCredits;
+          if (typeof s.enableToggle === 'boolean') document.getElementById('settingEnableCreditsToggle').checked = s.enableToggle;
+          if (typeof s.rolloverToggle === 'boolean') document.getElementById('settingRolloverToggle').checked = s.rolloverToggle;
+        }
+      } catch(e) {}
+
+      renderLimitsCards();
+    });
+  </script>
+</body>
+</html>

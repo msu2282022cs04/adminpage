@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ta" data-lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>தமிழி | THAMILI - Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <div class="app-layout">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="sidebar-logo-link" id="logoLink">
+          <img src="assets/images/thamili-logo-ta.png" alt="தமிழி" class="sidebar-brand-logo" id="sidebarBrandLogo">
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- 1. Home -->
+        <div class="nav-item">
+          <a href="index.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <span class="nav-text" data-i18n="nav_home">முகப்பு</span>
+          </a>
+          <div class="submenu-flyout">
+            <ul class="submenu-list">
+              <li><a href="index.html" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_home_overview">செயல்பாட்டு பலகை</span></a></li>
+              <li><a href="reports.html" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_home_analytics">பயன்பாட்டு புள்ளிவிவரங்கள்</span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 2. User Management (Active) -->
+        <div class="nav-item active">
+          <a href="users.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span class="nav-text" data-i18n="nav_users">பயனர் மேலாண்மை</span>
+          </a>
+          <div class="submenu-flyout">
+            <ul class="submenu-list">
+              <li><a href="users.html" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_users_list">பயனர் பட்டியல்</span></a></li>
+              <li><a href="javascript:void(0)" onclick="openModal('addUserModal')" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_users_add">புதிய பயனர் சேர்</span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3. AI Tools -->
+        <div class="nav-item">
+          <a href="ai-tools.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            <span class="nav-text" data-i18n="nav_ai_tools">AI கருவிகள்</span>
+          </a>
+          <div class="submenu-flyout">
+            <ul class="submenu-list">
+              <li><a href="ai-tools.html#chat" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_ai_chat">AI உரையாடல்</span></a></li>
+              <li><a href="ai-tools.html#image" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_ai_image">பட உருவாக்கம்</span></a></li>
+              <li><a href="ai-tools.html#video" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_ai_video">காணொளிக் கருவிகள்</span></a></li>
+              <li><a href="ai-tools.html#code" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_ai_code">நிரலாக்கக் கருவிகள்</span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 4. AI Usage -->
+        <div class="nav-item">
+          <a href="ai-usage.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            <span class="nav-text" data-i18n="nav_ai_usage">AI பயன்பாடு</span>
+          </a>
+          <div class="submenu-flyout">
+            <ul class="submenu-list">
+              <li><a href="ai-usage.html#stats" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_ai_usage_stats">பயன்பாட்டு புள்ளிவிவரங்கள்</span></a></li>
+              <li><a href="ai-usage.html#tools" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_ai_usage_tools">கருவிகள் பகுப்பாய்வு</span></a></li>
+              <li><a href="ai-usage.html#activity" class="submenu-link"><span class="sub-dot"></span><span data-i18n="sub_ai_usage_activity">சமீபத்திய செயல்பாடுகள்</span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 5. Settings -->
+        <div class="nav-item">
+          <a href="settings.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span class="nav-text" data-i18n="nav_settings">அமைப்புகள்</span>
+          </a>
+        </div>
+
+        <!-- 6. Language Settings -->
+        <div class="nav-item">
+          <a href="language.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <span class="nav-text" data-i18n="nav_language">மொழி அமைப்பு</span>
+          </a>
+        </div>
+
+        <!-- 7. Reports -->
+        <div class="nav-item">
+          <a href="reports.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            <span class="nav-text" data-i18n="nav_reports">தகவல் அறிக்கைகள்</span>
+          </a>
+        </div>
+
+        <!-- 8. Feedback -->
+        <div class="nav-item">
+          <a href="feedback.html" class="nav-link">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            <span class="nav-text" data-i18n="nav_feedback">பயனர் கருத்துக்கள்</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-admin-card" onclick="openModal('profileModal')">
+          <div class="sidebar-avatar-wrapper">
+            <img src="assets/images/robot-avatar.jpg" alt="Admin" class="sidebar-avatar">
+            <span class="online-indicator"></span>
+          </div>
+          <div class="sidebar-admin-info">
+            <span class="sidebar-admin-name admin-display-name" data-i18n="admin_name">நிர்வாகி</span>
+            <span class="sidebar-admin-role" data-i18n="admin_title">முதன்மை நிர்வாகி</span>
+          </div>
+        </div>
+        <div class="sidebar-quote-container">
+          <span class="sidebar-quote-icon">🍃</span>
+          <span class="sidebar-quote-text" data-i18n="sidebar_quote">"தமிழின் சிறந்த AI உலகம்..."</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <main class="main-wrapper">
+      <!-- Header -->
+      <header class="top-header">
+        <button class="mobile-menu-btn" id="mobileMenuToggle"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+        
+        <div class="header-search-wrapper">
+          <div class="search-input-group">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" class="search-input" id="globalSearchInput" data-i18n-placeholder="search_placeholder" placeholder="தேடுங்கள்..." autocomplete="off">
+          </div>
+          <div class="search-results-dropdown hidden" id="searchResultsDropdown"></div>
+        </div>
+
+        <div class="header-actions">
+          <div class="dropdown-container">
+            <button class="header-pill-btn" id="langDropdownBtn">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              <span id="currentLangLabel">தமிழ்</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="dropdown-menu hidden" id="langDropdownMenu">
+              <a href="#" class="dropdown-item lang-opt active" data-lang-val="ta"><span>தமிழ்</span></a>
+              <a href="#" class="dropdown-item lang-opt" data-lang-val="en"><span>English</span></a>
+            </div>
+          </div>
+
+          <div class="header-datetime-widget">
+            <svg class="datetime-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <div class="datetime-text">
+              <span class="header-date" id="headerDate">19 செப்டம்பர் 2026</span>
+              <span class="header-time" id="headerTime">காலை 10:24</span>
+            </div>
+          </div>
+
+          <div class="dropdown-container">
+            <button class="header-pill-btn admin-profile-pill" id="profileDropdownBtn">
+              <img src="assets/images/robot-avatar.jpg" alt="Admin" class="admin-header-avatar">
+              <span class="admin-display-name" data-i18n="admin_name">நிர்வாகி</span>
+              <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="dropdown-menu hidden" id="profileDropdownMenu">
+              <a href="#" class="dropdown-item" id="menuViewProfile"><span data-i18n="profile_menu_profile">சுயவிவரம்</span></a>
+              <a href="#" class="dropdown-item" id="menuEditProfile"><span data-i18n="profile_menu_edit">சுயவிவரத்தைத் திருத்து</span></a>
+              <a href="#" class="dropdown-item" id="menuChangePassword"><span data-i18n="profile_menu_password">கடவுச்சொல் மாற்று</span></a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item danger" id="menuLogout"><span data-i18n="profile_menu_logout">வெளியேறு</span></a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Page Banner -->
+      <section class="page-hero-banner">
+        <div class="page-title-group">
+          <h1 class="page-main-heading" data-i18n="page_users_title">பயனர் மேலாண்மை</h1>
+          <p class="page-subheading" data-i18n="page_users_subtitle">பதிவு செய்த பயனர்களின் பட்டியல் மற்றும் அனுமதிகள்</p>
+        </div>
+        <button class="page-hero-action-btn" onclick="openModal('addUserModal')">
+          <span>+</span> <span data-i18n="sub_users_add">புதிய பயனர் சேர்</span>
+        </button>
+      </section>
+
+      <!-- Users Table Card -->
+      <section class="page-card">
+        <div class="card-header-bar">
+          <div class="card-title-text">
+            <span data-i18n="sub_users_list">பயனர் பட்டியல்</span> (1,248)
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <input type="text" id="userSearchInput" class="form-input" style="width: 260px; padding: 6px 12px; font-size: 12px;" data-i18n-placeholder="placeholder_search_user" placeholder="பயனர் பெயர் அல்லது மின்னஞ்சலைத் தேடுக...">
+          </div>
+        </div>
+
+        <div class="data-table-wrapper">
+          <table class="thamili-table" id="usersTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th data-i18n="th_user">பயனர்</th>
+                <th data-i18n="th_role">பொறுப்பு</th>
+                <th data-i18n="th_joined_date">சேர்ந்த தேதி</th>
+                <th data-i18n="th_status">நிலை</th>
+                <th data-i18n="th_actions">செயல்கள்</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>
+                  <div class="user-avatar-cell">
+                    <img src="assets/images/robot-avatar.jpg" class="user-thumb" alt="User">
+                    <div class="user-meta-info">
+                      <span class="user-name" data-i18n="user_1_name">சரவணன் முத்துக்குமார்</span>
+                      <span class="user-email">saravanan123@example.com</span>
+                    </div>
+                  </div>
+                </td>
+                <td><span data-i18n="role_super_admin">முதன்மை பயனர்</span></td>
+                <td>19 Sep 2026</td>
+                <td><span class="status-pill active"><span class="status-dot"></span><span data-i18n="status_active">செயலில் உள்ளது</span></span></td>
+                <td>
+                  <div class="action-btn-group">
+                    <button class="action-icon-btn" title="Edit" onclick="showToast('Edit')">✏️</button>
+                    <button class="action-icon-btn delete" title="Delete" onclick="this.closest('tr').remove(); showToast('Deleted')">🗑️</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>
+                  <div class="user-avatar-cell">
+                    <img src="assets/images/robot-avatar.jpg" class="user-thumb" alt="User">
+                    <div class="user-meta-info">
+                      <span class="user-name" data-i18n="user_2_name">பிரியா சுந்தர்ராஜ்</span>
+                      <span class="user-email">priya.sundar@example.com</span>
+                    </div>
+                  </div>
+                </td>
+                <td><span data-i18n="role_developer">மென்பொருள் உருவாக்குநர்</span></td>
+                <td>18 Sep 2026</td>
+                <td><span class="status-pill active"><span class="status-dot"></span><span data-i18n="status_active">செயலில் உள்ளது</span></span></td>
+                <td>
+                  <div class="action-btn-group">
+                    <button class="action-icon-btn" title="Edit" onclick="showToast('Edit')">✏️</button>
+                    <button class="action-icon-btn delete" title="Delete" onclick="this.closest('tr').remove(); showToast('Deleted')">🗑️</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>
+                  <div class="user-avatar-cell">
+                    <img src="assets/images/robot-avatar.jpg" class="user-thumb" alt="User">
+                    <div class="user-meta-info">
+                      <span class="user-name" data-i18n="user_3_name">கார்த்திக் பாலமுருகன்</span>
+                      <span class="user-email">karthik.b@example.com</span>
+                    </div>
+                  </div>
+                </td>
+                <td><span data-i18n="role_general">பொதுப் பயனர்</span></td>
+                <td>15 Sep 2026</td>
+                <td><span class="status-pill active"><span class="status-dot"></span><span data-i18n="status_active">செயலில் உள்ளது</span></span></td>
+                <td>
+                  <div class="action-btn-group">
+                    <button class="action-icon-btn" title="Edit" onclick="showToast('Edit')">✏️</button>
+                    <button class="action-icon-btn delete" title="Delete" onclick="this.closest('tr').remove(); showToast('Deleted')">🗑️</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>
+                  <div class="user-avatar-cell">
+                    <img src="assets/images/robot-avatar.jpg" class="user-thumb" alt="User">
+                    <div class="user-meta-info">
+                      <span class="user-name" data-i18n="user_4_name">அனிதா இராமலிங்கம்</span>
+                      <span class="user-email">anitha.ram@example.com</span>
+                    </div>
+                  </div>
+                </td>
+                <td><span data-i18n="role_writer">உள்ளடக்க எழுத்தாளர்</span></td>
+                <td>12 Sep 2026</td>
+                <td><span class="status-pill inactive"><span class="status-dot"></span><span data-i18n="status_inactive">செயலற்றது</span></span></td>
+                <td>
+                  <div class="action-btn-group">
+                    <button class="action-icon-btn" title="Edit" onclick="showToast('Edit')">✏️</button>
+                    <button class="action-icon-btn delete" title="Delete" onclick="this.closest('tr').remove(); showToast('Deleted')">🗑️</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Add User Modal -->
+  <div class="modal-overlay" id="addUserModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" data-i18n="sub_users_add">புதிய பயனர் சேர்</h3>
+        <button class="modal-close-btn" data-close-modal="addUserModal">&times;</button>
+      </div>
+      <form id="addUserForm" onsubmit="event.preventDefault(); closeModal('addUserModal'); showToast(window.i18n && window.i18n.currentLang === 'ta' ? 'புதிய பயனர் வெற்றிகரமாக சேர்க்கப்பட்டார்!' : 'User created successfully!');">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" data-i18n="label_fullname">முழு பெயர்</label>
+            <input type="text" class="form-input" required placeholder="User Name">
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="label_email">மின்னஞ்சல்</label>
+            <input type="email" class="form-input" required placeholder="user@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="label_role">பொறுப்பு</label>
+            <select class="form-select">
+              <option data-i18n="role_general">பொதுப் பயனர்</option>
+              <option data-i18n="role_writer">உள்ளடக்க எழுத்தாளர்</option>
+              <option data-i18n="role_developer">மென்பொருள் உருவாக்குநர்</option>
+              <option data-i18n="role_admin">நிர்வாகி</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn-primary" data-i18n="btn_save">சேமிக்கவும்</button>
+          <button type="button" class="btn-secondary" data-close-modal="addUserModal" data-i18n="btn_cancel">ரத்து செய்</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modals & Scripts -->
+  <!-- 1. Administrator Profile Modal -->
+  <div class="modal-overlay" id="profileModal">
+    <div class="modal-dialog admin-profile-dialog">
+      <div class="admin-profile-header">
+        <div class="admin-profile-header-left">
+          <div class="admin-profile-header-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <h3 class="admin-profile-title" data-i18n="modal_profile_title">Administrator Profile</h3>
+        </div>
+        <button class="admin-profile-close-btn" data-close-modal="profileModal" aria-label="Close">&times;</button>
+      </div>
+      <div class="admin-profile-body">
+        <div class="admin-profile-grid">
+          <div class="admin-summary-card">
+            <div class="admin-summary-avatar-wrap">
+              <img src="assets/images/admin-avatar.svg" alt="Admin Avatar" class="admin-summary-avatar" onerror="this.src='assets/images/robot-avatar.jpg'">
+            </div>
+            <h4 class="admin-summary-name admin-display-name">Arun Kumar</h4>
+            <div>
+              <span class="admin-summary-role-badge">
+                <span class="crown-icon">👑</span>
+                <span data-i18n="profile_role_badge">Administrator</span>
+              </span>
+            </div>
+            <div class="admin-summary-spec-box">
+              <div class="admin-spec-row">
+                <div class="admin-spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+                <div class="admin-spec-text"><span class="admin-spec-label" data-i18n="profile_admin_id">Admin ID</span><span class="admin-spec-val" id="profileAdminId">ADM001</span></div>
+              </div>
+              <div class="admin-spec-row">
+                <div class="admin-spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div>
+                <div class="admin-spec-text"><span class="admin-spec-label" data-i18n="label_role">Role</span><span class="admin-spec-val" id="profileRole" data-i18n="profile_role_badge">Administrator</span></div>
+              </div>
+              <div class="admin-spec-row">
+                <div class="admin-spec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
+                <div class="admin-spec-text"><span class="admin-spec-label" data-i18n="profile_last_login">Last Login</span><span class="admin-spec-val" id="profileLastLogin">22 Sep 2025, 10:24 AM</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="admin-details-col">
+            <div class="admin-info-section">
+              <div class="admin-section-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span data-i18n="profile_personal_info">Personal Information</span>
+              </div>
+              <div class="admin-info-rows">
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg><span data-i18n="label_fullname">Full Name</span></span><span class="admin-row-val admin-display-name">Arun Kumar</span></div>
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg><span data-i18n="profile_username">Username</span></span><span class="admin-row-val" id="profileUsernameVal">arun@admin</span></div>
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span data-i18n="label_email">Email Address</span></span><span class="admin-row-val" id="profileDisplayEmail">arun@example.com</span></div>
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg><span data-i18n="profile_phone">Phone Number</span></span><span class="admin-row-val" id="profilePhoneVal">+91 98765 43210</span></div>
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg><span data-i18n="profile_dob">Date of Birth</span></span><span class="admin-row-val" id="profileDobVal">15 Apr 1995</span></div>
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg><span data-i18n="profile_gender">Gender</span></span><span class="admin-row-val" id="profileGenderVal" data-i18n="profile_gender_male">Male</span></div>
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg><span data-i18n="label_bio">Biography</span></span><span class="admin-row-val" id="profileBioVal">Lead Administrator for Thamili AI Platform.</span></div>
+              </div>
+            </div>
+            <div class="admin-info-section">
+              <div class="admin-section-header">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span data-i18n="profile_account_details">Account Details</span>
+              </div>
+              <div class="admin-info-rows">
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg><span data-i18n="profile_created">Account Created</span></span><span class="admin-row-val" id="profileCreatedVal">01 Jan 2025, 09:12 AM</span></div>
+                <div class="admin-info-row"><span class="admin-row-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg><span data-i18n="profile_status">Account Status</span></span><span class="admin-row-val" id="profileStatusVal"><span class="admin-status-pill"><span class="admin-status-dot"></span><span data-i18n="profile_status_active">Active</span></span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="admin-profile-footer">
+        <button type="button" class="btn-profile-edit" onclick="closeModal('profileModal'); openModal('editProfileModal');">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+          <span data-i18n="btn_edit_profile">Edit Profile</span>
+        </button>
+        <button type="button" class="btn-profile-pwd" onclick="closeModal('profileModal'); openModal('changePasswordModal');">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          <span data-i18n="btn_change_pwd">Change Password</span>
+        </button>
+        <button type="button" class="btn-profile-logout" onclick="closeModal('profileModal'); openModal('logoutModal');">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span data-i18n="btn_logout">Logout</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Edit Profile Modal -->
+  <div class="modal-overlay" id="editProfileModal">
+    <div class="modal-dialog admin-edit-dialog">
+      <div class="admin-profile-header">
+        <div class="admin-profile-header-left">
+          <div class="admin-profile-header-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+          </div>
+          <h3 class="admin-profile-title" data-i18n="modal_edit_profile_title">Edit Admin Profile</h3>
+        </div>
+        <button class="admin-profile-close-btn" data-close-modal="editProfileModal" aria-label="Close">&times;</button>
+      </div>
+
+      <form id="editProfileForm">
+        <div class="modal-body admin-edit-body">
+          <div class="edit-photo-box">
+            <div class="edit-photo-preview-wrap">
+              <img src="assets/images/admin-avatar.svg" alt="Admin Preview" class="edit-photo-preview" id="editAvatarPreview" onerror="this.src='assets/images/robot-avatar.jpg'">
+              <div class="edit-photo-meta">
+                <span class="edit-photo-title" data-i18n="label_photo">Profile Photo</span>
+                <span class="edit-photo-hint" data-i18n="label_photo_hint">JPG, PNG or SVG format (Max 2MB)</span>
+              </div>
+            </div>
+            <label class="btn-upload-photo" for="editAvatarFile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              <span data-i18n="btn_change_photo">Change Photo</span>
+              <input type="file" id="editAvatarFile" accept="image/*" style="display: none;">
+            </label>
+          </div>
+
+          <div class="edit-form-grid">
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editFullName">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span data-i18n="label_fullname">Full Name</span>
+              </label>
+              <input type="text" class="form-input-custom" id="editFullName" required placeholder="Full Name">
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editUsername">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                <span data-i18n="profile_username">Username</span>
+              </label>
+              <input type="text" class="form-input-custom" id="editUsername" required placeholder="Username">
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editEmail">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span data-i18n="label_email">Email Address</span>
+              </label>
+              <input type="email" class="form-input-custom" id="editEmail" required placeholder="Email Address">
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editPhone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <span data-i18n="profile_phone">Phone Number</span>
+              </label>
+              <input type="tel" class="form-input-custom" id="editPhone" required pattern="[0-9]{10}" maxlength="10" placeholder="10-digit mobile number">
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editDob">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span data-i18n="profile_dob">Date of Birth</span>
+              </label>
+              <input type="date" class="form-input-custom" id="editDob">
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editGender">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+                <span data-i18n="profile_gender">Gender</span>
+              </label>
+              <select class="form-select-custom" id="editGender">
+                <option value="Male" data-i18n="gender_male">Male</option>
+                <option value="Female" data-i18n="gender_female">Female</option>
+                <option value="Prefer not to say" data-i18n="gender_other">Prefer not to say</option>
+              </select>
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editAdminId">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span data-i18n="label_admin_id">Admin ID</span>
+                <span class="form-readonly-tag" data-i18n="readonly_tag">System Managed</span>
+              </label>
+              <input type="text" class="form-input-custom" id="editAdminId" value="ADM001" readonly>
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editRole">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span data-i18n="label_role">Role</span>
+                <span class="form-readonly-tag" data-i18n="readonly_tag">System Managed</span>
+              </label>
+              <input type="text" class="form-input-custom" id="editRole" value="Administrator" readonly>
+            </div>
+
+            <div class="form-group-custom edit-form-full">
+              <label class="form-label-custom" for="editBio">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span data-i18n="label_bio">Biography</span>
+              </label>
+              <textarea class="form-textarea-custom" rows="2" id="editBio" placeholder="Enter biography..."></textarea>
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editCreated">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span data-i18n="label_account_created">Account Created</span>
+                <span class="form-readonly-tag" data-i18n="readonly_tag">System Managed</span>
+              </label>
+              <input type="text" class="form-input-custom" id="editCreated" value="01 Jan 2025, 09:12 AM" readonly>
+            </div>
+
+            <div class="form-group-custom">
+              <label class="form-label-custom" for="editLastLogin">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span data-i18n="label_last_login">Last Login</span>
+                <span class="form-readonly-tag" data-i18n="readonly_tag">System Managed</span>
+              </label>
+              <input type="text" class="form-input-custom" id="editLastLogin" value="22 Sep 2025, 10:24 AM" readonly>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-profile-footer">
+          <button type="submit" class="btn-profile-edit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span data-i18n="btn_save">Save Changes</span>
+          </button>
+          <button type="button" class="btn-profile-logout" data-close-modal="editProfileModal" data-i18n="btn_cancel">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="changePasswordModal">
+    <div class="modal-dialog"><div class="modal-header"><h3 class="modal-title" data-i18n="modal_change_pwd_title">கடவுச்சொல் மாற்று</h3><button class="modal-close-btn" data-close-modal="changePasswordModal">&times;</button></div><form id="changePasswordForm"><div class="modal-body"><div class="form-group"><label class="form-label" data-i18n="label_new_pwd">புதிய கடவுச்சொல்</label><input type="password" class="form-input" id="newPwd" required></div><div class="form-group"><label class="form-label" data-i18n="label_confirm_pwd">புதிய கடவுச்சொல்லை உறுதி செய்</label><input type="password" class="form-input" id="confirmPwd" required></div></div><div class="modal-footer"><button type="submit" class="btn-primary" data-i18n="btn_save">சேமிக்கவும்</button></div></form></div>
+  </div>
+
+  <div class="modal-overlay" id="logoutModal">
+    <div class="modal-dialog"><div class="modal-header"><h3 class="modal-title" data-i18n="modal_logout_title">வெளியேற உறுதிப்படுத்தவும்</h3><button class="modal-close-btn" data-close-modal="logoutModal">&times;</button></div><div class="modal-body"><p data-i18n="modal_logout_desc">நிர்வாக அமர்விலிருந்து வெளியேற விரும்புகிறீர்களா?</p></div><div class="modal-footer"><button type="button" class="btn-danger" id="btnConfirmLogout" data-i18n="btn_logout">வெளியேறு</button></div></div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById('userSearchInput')?.addEventListener('input', function(e) {
+      const q = e.target.value.toLowerCase();
+      document.querySelectorAll('#usersTable tbody tr').forEach(row => {
+        row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

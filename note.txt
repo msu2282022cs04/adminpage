@@ -1,0 +1,635 @@
+========================================
+THAMILI PROJECT WORKFLOW
+========================
+
+Name: Kalpana
+
+Project Name: THAMILI
+
+
+================================================================================
+1. PROJECT INTRODUCTION
+================================================================================
+THAMILI (தமிழி) is a modern, bilingual (Tamil and English) Artificial Intelligence 
+Admin Dashboard and unified AI Hub platform. The website is engineered to empower 
+administrators and Tamil-speaking users with direct access to next-generation AI 
+tools entirely localized in the Tamil language, while providing a powerful, 
+responsive administrative control panel to monitor usage, manage users, configure 
+tools, and track system analytics.
+
+
+================================================================================
+2. PROJECT OBJECTIVE
+================================================================================
+The core objectives of the THAMILI project are:
+1. Bridging the Digital Divide: Making advanced generative AI technologies 
+   (Chatbots, Video Generation, Image Synthesis, Code Generation, Text-to-Speech 
+   Audio, and Content Writing) accessible to Tamil-speaking individuals in their 
+   native script and Tanglish.
+2. Centralized Platform Administration: Providing a secure, intuitive dashboard 
+   for platform administrators to monitor key metrics (active users, query counts, 
+   token usage, server health), review recent activity logs, manage subscriptions, 
+   and moderate generated content.
+3. High Performance & Dual Architecture: Delivering lightning-fast user 
+   interactions through a modern React Single Page Application (SPA) with smooth 
+   client-side routing, paired with a lightweight Node.js/Python backend API server.
+
+
+================================================================================
+3. FRONTEND
+================================================================================
+The frontend is the visual and interactive user interface of the THAMILI platform.
+
+A. Frontend Technologies Used:
+   - React 18 (v18.3.1): Core UI library for building modular, reusable component 
+     hierarchies.
+   - React DOM (v18.3.1): Renders React components efficiently into the browser DOM.
+   - React Router DOM (v6.26.2): Manages client-side routing, navigation between 
+     pages without full page reloads, dynamic URL parameters, and fallback routes.
+   - Vanilla CSS3 Design System: Custom-crafted responsive design system with 
+     modern dark-mode glassmorphism, glowing gradient accents, CSS Grid, and 
+     Flexbox layouts.
+   - Google Fonts Typography: Mukta Malar (for authentic Tamil script rendering), 
+     Outfit, and Inter (for clean, modern UI numerals and English headings).
+   - Vite 5 (v5.4.6): Next-generation frontend build tool and development server 
+     providing Instant Hot Module Replacement (HMR).
+
+B. Key Frontend Source Files:
+   - index.html: Entry HTML document with Google Fonts, favicon, and root mount point.
+   - src/main.jsx: Application bootstrap file that injects stylesheets and renders 
+     the root React tree.
+   - src/App.jsx: Central routing engine registering all 16 page routes and global 
+     providers.
+   - src/components/layout/:
+     * Layout.jsx: Common layout wrapper containing Sidebar, Header, and content area.
+     * Header.jsx: Top bar with global search, language switcher (தமிழ் / EN), 
+       notifications, theme toggle, and Admin profile quick access.
+     * Sidebar.jsx: Left navigation menu with active route highlighting, badge counts, 
+       and links to all 16 sections.
+   - src/components/common/:
+     * UsageChart.jsx: Interactive visual analytics chart for weekly AI platform usage.
+     * ToastContainer.jsx: Floating alert notification system for user action feedback.
+   - src/components/modals/:
+     * AdminProfileModal.jsx: Full-featured popup modal allowing administrators to 
+       view and edit profile details (Name, Username, Email, Phone, DOB, Gender, Bio).
+   - src/context/:
+     * AdminProfileContext.jsx: Global state manager for administrator identity.
+     * I18nContext.jsx: Bilingual localization provider for seamless Tamil/English toggling.
+     * ToastContext.jsx: Global notification dispatcher.
+   - src/data/translations.js: Complete bilingual key-value dictionary containing 
+     over 400+ translation phrases across all dashboard pages.
+
+C. How the Frontend Displays and Operates:
+   - When the user opens the website, React mounts the Layout component into #root.
+   - The user interface dynamically updates based on state changes without reloading 
+     the web browser.
+   - The Admin Page is structured with a multi-column responsive dashboard grid: 
+     a main column containing a Hero Welcome Banner, 6 Quick Access AI Tool Cards, 
+     Platform Usage Analytics Chart, and Security/Speed Badges; and a right side column 
+     displaying Live Key Statistics (Registered Users, Site Visitors, Active Users), 
+     Recent Activity Logs, and a Promotional Banner.
+   - Interactive events (button clicks, form inputs, language changes, profile edits) 
+     update React state and trigger real-time UI re-renders and REST API network requests.
+
+
+================================================================================
+4. BACKEND
+================================================================================
+A functional backend server is implemented in the THAMILI project to handle API 
+routing, AI processing, file serving, and external LLM communication.
+
+A. Backend Technologies Used:
+   - Node.js Runtime (Primary Backend - server.js): Built using native Node.js 
+     standard libraries (http, https, fs, path, crypto, url) without heavy third-party 
+     framework bloat, listening on port 8080 (or process.env.PORT).
+   - Python 3 Server (Alternative Backend - server.py): Python standard library 
+     HTTP server (http.server, urllib.request, socketserver) providing AI chat routing 
+     and UTF-8 console output.
+
+B. What the Backend Does:
+   1. Serves the static production frontend build files (HTML, CSS, JS, Images).
+   2. Acts as a secure API Gateway connecting frontend client requests to external 
+      AI LLM engines (Google Gemini API, OpenAI / Groq API, Pollinations AI, Google TTS).
+   3. Houses Built-in Native Offline Intelligence Engines: If external API keys are 
+      not provided or internet connectivity is limited, the backend executes built-in 
+      rule-based Tamil/English intelligence logic to return instant, accurate answers, 
+      code templates, content articles, and image links.
+   4. Manages In-Memory State: Tracks asynchronous video generation job queues and 
+      processing states.
+
+C. Frontend → Backend Communication:
+   - The React frontend communicates with the Node.js backend using standard 
+     asynchronous HTTP requests via the browser's built-in `fetch()` API.
+   - Payloads and responses are structured as standardized JSON (application/json) 
+     with CORS headers enabled.
+
+
+================================================================================
+5. API (APPLICATION PROGRAMMING INTERFACE)
+================================================================================
+APIs are implemented and actively utilized throughout the THAMILI project.
+
+A. Internal Custom REST API Endpoints (server.js):
+   1. POST /api/chat
+      - Purpose: Multi-turn conversational AI chatbot.
+      - Data Handled: User query, conversation history array, selected language (ta/en).
+      - Response: AI-generated response text formatted in clean Markdown.
+   2. POST /api/code/generate
+      - Purpose: Full-Stack software generator and multi-file code architect.
+      - Data Handled: Prompt, architecture mode (fullstack/frontend/backend), language.
+      - Response: Multi-file project structure (package.json, server.js, index.html, 
+        style.css, app.js) with runnable code.
+   3. POST /api/content/generate
+      - Purpose: Multi-format copywriting and content transformation studio.
+      - Data Handled: Topic prompt, category (blog/social/article), tone, action, language.
+      - Response: Structured article title, formatted body text, word count, character count.
+   4. POST /api/image/generate
+      - Purpose: Text-to-Image synthesis studio.
+      - Data Handled: Description prompt, visual style (Photorealistic/Anime/3D/Art), aspect ratio.
+      - Response: High-resolution image URL, metadata, and generation parameters.
+   5. POST /api/image/edit
+      - Purpose: Natural language image editing and transformation.
+      - Data Handled: Source image URL / data, transformation instruction.
+      - Response: Transformed image URL and comparison data.
+   6. POST /api/video/generate
+      - Purpose: Text-to-Video and Image-to-Video generation engine.
+      - Data Handled: Motion prompt, source image, style, duration, aspect ratio.
+      - Response: Unique video job ID, rendering status, and video asset URL.
+   7. GET /api/video/status
+      - Purpose: Video generation job status polling.
+      - Data Handled: Job ID query parameter.
+      - Response: Job progress percentage, completion status, and downloadable MP4 URL.
+   8. POST /api/audio/tts
+      - Purpose: Real Text-to-Speech (TTS) audio synthesizer.
+      - Data Handled: Input text, language code (ta/en), voice profile.
+      - Response: Streamable audio URL (audio/mp3) and speech parameters.
+   9. POST /api/upload
+      - Purpose: Secure media data receiver.
+      - Data Handled: Base64 data URL, file name, MIME type.
+      - Response: Server confirmation, file URL, and metadata.
+   10. GET /api/status
+       - Purpose: System health check and active AI provider detector.
+       - Response: Online status, active provider name, and enabled tool list.
+
+B. External Third-Party APIs Integrated:
+   - Google Gemini API: For advanced conversational intelligence (gemini-1.5-flash).
+   - OpenAI / Groq API: For high-speed LLM text and code completions.
+   - Pollinations AI Neural Engine: For real-time text-to-image synthesis.
+   - Google Translate TTS API: For natural Tamil and English voice synthesis.
+   - Google Fonts API: For web font stylesheets.
+
+
+================================================================================
+6. DATABASE
+================================================================================
+Status: No external database server (such as MySQL, PostgreSQL, MongoDB, or Firebase) 
+is connected in the current project.
+
+How Data Storage and Persistence Are Actually Handled:
+1. Client-Side Browser LocalStorage:
+   - 'thamili_admin_profile': Stores administrator profile info (Name: Arun Kumar, 
+     Username, Email, Phone, DOB, Gender, Role, Bio).
+   - 'thamili_lang': Stores active language selection ('ta' for Tamil, 'en' for English).
+   - 'thamili_ai_chat_history': Persists user chat conversations between sessions.
+   - 'thamili_theme': Persists Dark/Light UI theme preferences.
+2. React Context In-Memory State:
+   - State variables across components maintain active UI filters, table pagination, 
+     search queries, modal visibility, and real-time form inputs.
+3. Server-Side In-Memory Stores:
+   - Node.js Map (`videoJobs`) in server.js tracks active video generation tasks.
+4. Static Data Files:
+   - src/data/translations.js and js/i18n.js provide predefined translation dictionaries.
+
+
+================================================================================
+7. PROGRAMMING LANGUAGES
+================================================================================
+The project is built using 5 core programming and data languages:
+
+1. JavaScript (ES6+ / JSX):
+   - Purpose: Implements all React frontend UI components, custom hooks, context 
+     providers, client-side routing, and the Node.js backend HTTP server (server.js).
+2. HTML5:
+   - Purpose: Defines semantic structure, document metadata, web font links, and DOM 
+     mount targets (index.html, standalone HTML pages).
+3. CSS3:
+   - Purpose: Controls all visual presentation, custom color tokens, glassmorphism effects, 
+     responsive grids, flexbox layouts, animations, transitions, and hover states.
+4. Python (Python 3):
+   - Purpose: Implements the alternative backend server (server.py) and image/logo 
+     processing scripts.
+5. JSON (JavaScript Object Notation):
+   - Purpose: Defines project dependencies and build scripts (package.json, 
+     package-lock.json) and formats REST API request/response payloads.
+
+
+================================================================================
+8. FRAMEWORKS AND LIBRARIES
+================================================================================
+Only the frameworks and libraries actually found in the project are listed below:
+
+1. React (v18.3.1) - [Frontend UI Framework]:
+   - Component-based architecture for declarative user interfaces and reactive state management.
+2. React DOM (v18.3.1) - [Rendering Engine]:
+   - Renders React virtual DOM nodes into browser DOM elements.
+3. React Router DOM (v6.26.2) - [Client-Side Routing Library]:
+   - Enables multi-page navigation across 16 routes without reloading the browser.
+4. Vite (v5.4.6) - [Build Tool & Dev Server]:
+   - High-speed bundling, modern ES module dev server, and production optimization.
+5. @vitejs/plugin-react (v4.3.1) - [Vite Plugin]:
+   - Fast React JSX transformation and Hot Module Replacement support.
+6. Node.js Built-in Standard Modules (http, https, fs, path, crypto, url):
+   - Provides native HTTP server and cryptographic capabilities for server.js.
+
+
+================================================================================
+9. TOOLS USED
+================================================================================
+1. Antigravity IDE / VS Code: Modern code editor used for full-stack development, 
+   debugging, and testing.
+2. Node.js & npm: JavaScript runtime environment and package manager for installing 
+   dependencies and running server scripts.
+3. Python 3: Runtime interpreter for running Python server and image processing scripts.
+4. Vite CLI: Used for running the local frontend development server (`npm run dev`) 
+   and compiling production bundles (`npm run build`).
+5. Web Browsers (Chrome / Edge / Firefox): For testing UI responsiveness, verifying 
+   DOM accessibility, and previewing bilingual features.
+6. Git: Version control system for tracking project revisions.
+
+
+================================================================================
+10. ADMIN PAGE WORKFLOW
+================================================================================
+As the creator of the THAMILI Admin Page, here is the exact, step-by-step workflow 
+of how an administrator accesses and operates the platform:
+
+Step 1: Admin Opens the THAMILI Website
+   - The admin launches the website URL in a browser (e.g., http://localhost:5173 
+     or http://localhost:8080).
+   - The React Application loads into index.html, initializes global contexts 
+     (I18nContext, AdminProfileContext, ToastContext), and displays the Layout.
+
+Step 2: Admin Dashboard Overview
+   - The Admin lands on the Dashboard (/ or /dashboard).
+   - What the Admin sees:
+     * Header: THAMILI Logo, Search Bar, Language Switcher (தமிழ்/English), 
+       Notification Bell with active badge, Theme Switcher, and Admin Profile Avatar.
+     * Sidebar: Navigation menu listing all 16 Admin sections with icons and badges.
+     * Hero Banner: Welcome banner displaying "தமிழி AI ஹப்" and quick link button.
+     * Quick Access Grid: 6 color-coded cards for immediate access to AI Hub Tools:
+       1) AI Chat (AI உரையாடல்)
+       2) Video Tools (வீடியோ கருவிகள்)
+       3) Image Tools (பட உருவாக்கம்)
+       4) Code Tools (கோடு கருவிகள்)
+       5) Audio Tools (ஆடியோ கருவிகள்)
+       6) Content Tools (உள்ளடக்க கருவிகள்)
+     * Platform Usage Chart: Interactive chart displaying daily AI request volumes.
+     * Live Metrics Sidebar: Real-time statistics for Registered Users (1,248), 
+       Site Visitors (8,932), and Active Users (236).
+     * Recent Activities List: Live audit trail of platform events (user signups, 
+       AI tool runs, content uploads, language switches).
+
+Step 3: Admin Navigates Between Management Pages
+   - The Admin can click any sidebar link or quick card to open dedicated management modules:
+     1. AI Tools Page (/ai-tools):
+        - View catalog of all AI models, toggle active/inactive states, set rate limits.
+     2. AI Chat Page (/ai-chat):
+        - Engage in multi-turn AI conversations in Tamil, Tanglish, or English.
+        - Send prompts -> Calls POST /api/chat -> Displays markdown formatted response.
+     3. Video Tools Page (/video-tools):
+        - Generate AI video clips from text prompts or reference images.
+        - Select style (Cinematic/3D/Anime), duration, and ratio -> Calls /api/video/generate.
+     4. Image Tools Page (/image-tools):
+        - Synthesize new images from prompts or edit existing images.
+        - Calls /api/image/generate or /api/image/edit -> Renders high-res previews with download.
+     5. Code Tools Page (/code-tools):
+        - Full-stack multi-file code generator.
+        - Calls /api/code/generate -> Outputs tabs for package.json, server.js, index.html, etc.
+     6. Audio Tools Page (/audio-tools):
+        - Text-to-Speech studio with Tamil/English voices.
+        - Calls /api/audio/tts -> Audio waveform player with playback & MP3 download.
+     7. Content Tools Page (/content-tools):
+        - AI copywriting assistant for blogs, articles, and social media.
+        - Calls /api/content/generate -> Generates formatted articles with word/char counters.
+     8. AI Usage Analytics Page (/ai-usage):
+        - Detailed charts of token consumption, cost breakdown, tool-by-tool usage percentages.
+     9. Credits & Subscription Page (/credits-subscription):
+        - Manage user subscription plans, pricing tiers, token credit allocations, and invoices.
+     10. Users Management Page (/users):
+         - Search, filter by role (Admin, Editor, User) and status (Active, Inactive, Banned).
+         - Add new users, edit user roles, toggle account status, and remove accounts.
+     11. Content Moderation Page (/content):
+         - Review AI-generated outputs and user submissions; approve or reject flagged content.
+     12. Language Settings Page (/language):
+         - Bilingual dictionary editor; add or update Tamil/English translation keys in real time.
+     13. Reports Page (/reports):
+         - Generate exportable audit logs, system performance reports, and CSV/PDF summaries.
+     14. Feedback Page (/feedback):
+         - View user feedback ratings, filter by sentiment, and track resolution status.
+     15. System Settings Page (/settings):
+         - Configure API keys, adjust security policies, toggle maintenance mode, change themes.
+
+Step 4: Admin Profile Management (AdminProfileModal)
+   - Admin clicks on the profile avatar in the Header.
+   - AdminProfileModal opens displaying complete details (Name: Arun Kumar, Role: Administrator, 
+     Email, Phone, Date of Birth, Gender, Bio).
+   - Admin can edit fields, upload a new avatar, or update contact info.
+   - On saving, the updated profile is persisted in LocalStorage and immediately updates 
+     the entire UI via AdminProfileContext with a success toast alert.
+
+Step 5: Language Switching Workflow
+   - Admin clicks the Language Switch button in the Header (e.g., toggles between தமிழ் and English).
+   - I18nContext updates the active language state (`ta` or `en`) and saves it to LocalStorage.
+   - All text strings, menu labels, card titles, badges, and chart legends across the entire 
+     application instantly re-render in the chosen language without reloading the page.
+
+
+================================================================================
+11. COMPLETE PROJECT WORKFLOW
+================================================================================
+
+[User / Admin Opens Browser]
+          ↓
+[Loads index.html & Bundled React Application]
+          ↓
+[App.jsx Initializes Context Providers (I18n, AdminProfile, Toast)]
+          ↓
+[React Router Renders Layout (Sidebar + Header + DashboardPage)]
+          ↓
+[User / Admin Interacts with UI (Navigation, Form Input, AI Tool Prompt)]
+          ↓
+[Frontend Event Handler Validates Input & Updates Local React State]
+          ↓
+[Frontend Sends Asynchronous HTTP POST/GET Request via fetch()]
+          ↓
+[Backend Server (server.js on Port 8080) Receives & Routes Request]
+          ↓
+    ┌───────────────────────────┴───────────────────────────┐
+    ↓                                                       ↓
+[External AI API Call]                            [Native Offline AI Engine]
+(Gemini / OpenAI / Groq / Pollinations / TTS)     (Rule-based Tamil/English logic)
+    └───────────────────────────┬───────────────────────────┘
+          ↓
+[Backend Compiles Structured JSON Response Payload]
+          ↓
+[Frontend fetch() Promise Resolves with Data]
+          ↓
+[React State Updates & Component Re-renders View]
+          ↓
+[Data Persisted to Browser LocalStorage (if profile/settings/chat)]
+          ↓
+[Toast Notification Confirms Successful Action to User / Admin]
+
+
+================================================================================
+12. FRONTEND → BACKEND → API → DATABASE CONNECTION FLOW
+================================================================================
+
+1. Frontend Layer (React + CSS):
+   - Captures user input (e.g., text prompt in AI Chat or Image generator).
+   - Performs client-side form validation and shows loading spinners.
+   - Dispatches an asynchronous `fetch('/api/...')` call with JSON body.
+
+2. Backend Gateway Layer (Node.js server.js):
+   - Listens on port 8080, parses incoming JSON request bodies, and verifies routes.
+   - Determines whether external LLM API keys exist (e.g., GEMINI_API_KEY).
+
+3. API Integration Layer:
+   - External APIs: If API keys are active, backend forwards requests to Google Gemini, 
+     OpenAI, Groq, Pollinations AI, or Google TTS.
+   - Native Fallback APIs: If offline or keys absent, backend executes native Tamil/English 
+     logic engines to generate intelligent responses.
+
+4. Database / Storage Layer:
+   - No external SQL/NoSQL database server is used.
+   - Client persistence is executed directly by the Frontend using Browser LocalStorage 
+     (`thamili_admin_profile`, `thamili_lang`, `thamili_ai_chat_history`).
+   - Server-side transient state is stored in Node.js In-Memory Maps (`videoJobs`).
+
+5. Response & Presentation Layer:
+   - Backend sends HTTP 200 OK with formatted JSON.
+   - Frontend updates React component state, renders result cards/previews, and displays 
+     success toast notifications.
+
+
+================================================================================
+13. TECHNOLOGY SUMMARY TABLE
+================================================================================
+
+--------------------------------------------------------------------------------------
+Technology           | Used / Not Used | Purpose & Actual Implementation
+--------------------------------------------------------------------------------------
+Frontend             | USED            | React 18, React DOM, React Router DOM v6, 
+                     |                 | Vanilla CSS3 Design System, Google Fonts.
+--------------------------------------------------------------------------------------
+Backend              | USED            | Node.js HTTP Server (server.js) on Port 8080 
+                     |                 | and Python Server (server.py) for API routing.
+--------------------------------------------------------------------------------------
+API                  | USED            | Custom REST API Endpoints (/api/chat, /api/code,
+                     |                 | /api/image, /api/video, /api/audio, /api/content) 
+                     |                 | + Google Gemini, Pollinations AI, Google TTS.
+--------------------------------------------------------------------------------------
+Database             | NOT USED (Direct| No external DB (MySQL/MongoDB). Uses Browser
+                     | SQL/NoSQL DB)   | LocalStorage, In-Memory Maps & React Context.
+--------------------------------------------------------------------------------------
+Programming Language | USED            | JavaScript (ES6+/JSX), HTML5, CSS3, Python, JSON.
+--------------------------------------------------------------------------------------
+Framework            | USED            | React 18 (UI Framework), Vite (Build Framework).
+--------------------------------------------------------------------------------------
+Libraries            | USED            | react-router-dom, @vitejs/plugin-react, 
+                     |                 | Node.js standard built-ins (http, fs, crypto).
+--------------------------------------------------------------------------------------
+Development Tools    | USED            | Antigravity IDE / VS Code, Node.js, npm, 
+                     |                 | Vite CLI, Python 3, Modern Web Browsers, Git.
+--------------------------------------------------------------------------------------
+
+
+================================================================================
+14. IMPORTANT PROJECT FEATURES
+================================================================================
+
+1. Bilingual Tamil & English Localization (I18n):
+   - Instant language switching across all 16 pages with 400+ authentic Tamil translations 
+     rendered in Mukta Malar typography.
+
+2. Comprehensive Admin Dashboard:
+   - Live metrics summary, weekly AI platform usage chart, recent activity feed, 
+     quick access tools grid, and promotional banner.
+
+3. 6 Dedicated AI HUB Tools:
+   - AI Chat: Multi-turn conversational chatbot supporting Tamil script, Tanglish, and English.
+   - Video Tools: Text-to-Video and Image-to-Video generator with style and aspect ratio controls.
+   - Image Tools: Text-to-Image creation and natural language photo editing.
+   - Code Tools: Multi-file full-stack code generator with package.json, backend, and frontend.
+   - Audio Tools: Text-to-Speech studio with Tamil/English voices and downloadable MP3 output.
+   - Content Tools: AI copywriting suite for blogs, social posts, essays, and summaries.
+
+4. User Management System:
+   - Interactive user directory with search, role-based filtering (Admin/Editor/User), 
+     status toggles (Active/Inactive/Banned), and account creation/deletion.
+
+5. Content Moderation & Review:
+   - System for reviewing flagged prompts, inspecting AI outputs, and approving/rejecting submissions.
+
+6. Language Translation Dictionary Manager:
+   - Admin interface to view, search, and update localized key-value translation strings.
+
+7. AI Usage & Analytics:
+   - In-depth tracking of token consumption, query volume trends, and tool usage distribution.
+
+8. Credits & Subscription Billing Management:
+   - Pricing tier management, user credit quotas, and transaction history logs.
+
+9. Audit Reports & System Logs:
+   - System event logs and activity reports exportable for administrative compliance.
+
+10. User Feedback & Rating System:
+    - User feedback monitoring with star ratings, issue categorization, and status tracking.
+
+11. System Settings & API Configuration:
+    - Centralized controls for external AI API keys, security options, and theme preferences.
+
+12. Admin Profile Management Modal:
+    - Comprehensive modal for viewing and editing Administrator information with LocalStorage persistence.
+
+13. Toast Notification Engine:
+    - Non-intrusive floating toast notifications confirming successful user operations.
+
+
+================================================================================
+15. PROJECT FILE AND FOLDER STRUCTURE
+================================================================================
+
+THAMILI-ADMIN/
+│
+├── index.html                     # Main HTML5 entry point mounting the React app
+├── package.json                   # Project manifest, npm dependencies & build scripts
+├── package-lock.json              # Locked dependency tree for npm packages
+├── vite.config.js                 # Vite bundler configuration with React plugin
+├── server.js                      # Primary Node.js REST API server & static file host
+├── server.py                      # Alternative Python 3 HTTP server for AI chat
+├── .env.example                   # Sample environment configuration for API keys
+├── note.txt                       # Project Workflow Document for teacher review
+│
+├── src/                           # React Frontend Source Code
+│   ├── main.jsx                   # React entry point rendering <App /> to DOM
+│   ├── App.jsx                    # Root router registering all 16 page routes
+│   │
+│   ├── components/                # Reusable UI Components
+│   │   ├── layout/
+│   │   │   ├── Layout.jsx         # Global shell wrapper (Sidebar + Header + Content)
+│   │   │   ├── Header.jsx         # Top navigation bar (Search, Lang, Profile, Theme)
+│   │   │   └── Sidebar.jsx        # Left navigation menu with 16 section links
+│   │   ├── common/
+│   │   │   ├── UsageChart.jsx     # Visual SVG chart for weekly platform AI usage
+│   │   │   └── ToastContainer.jsx # Global alert notification container
+│   │   └── modals/
+│   │       └── AdminProfileModal.jsx # Profile viewing & editing popup modal
+│   │
+│   ├── context/                   # Global State Providers
+│   │   ├── AdminProfileContext.jsx# Context managing Admin profile data & persistence
+│   │   ├── I18nContext.jsx        # Context managing Tamil/English bilingual state
+│   │   └── ToastContext.jsx       # Context dispatching toast alert messages
+│   │
+│   ├── data/
+│   │   └── translations.js        # 400+ Tamil and English key-value translation pairs
+│   │
+│   └── pages/                     # 16 Page Components
+│       ├── DashboardPage.jsx      # Main Admin dashboard overview
+│       ├── AiChatPage.jsx         # Dedicated AI Chat interactive studio
+│       ├── VideoToolsPage.jsx     # AI Video generation studio
+│       ├── ImageToolsPage.jsx     # AI Image generation and editing studio
+│       ├── CodeToolsPage.jsx      # Multi-file code generation architect
+│       ├── AudioToolsPage.jsx     # Text-to-Speech audio studio
+│       ├── ContentToolsPage.jsx   # AI Copywriting & content transformation
+│       ├── AiToolsPage.jsx        # AI model catalog and rate limiting
+│       ├── AiUsagePage.jsx        # AI usage analytics & token metrics
+│       ├── CreditsSubscriptionPage.jsx # Pricing plans & user credits
+│       ├── UsersPage.jsx          # User management directory
+│       ├── ContentPage.jsx        # Content moderation & review queue
+│       ├── LanguagePage.jsx       # Language dictionary manager
+│       ├── ReportsPage.jsx        # Audit reports & activity logs
+│       ├── FeedbackPage.jsx       # Feedback & satisfaction tracking
+│       └── SettingsPage.jsx       # System settings & API key manager
+│
+├── css/                           # Global Vanilla CSS3 Stylesheets
+│   ├── style.css                  # Base styles, CSS reset, and typography tokens
+│   ├── sidebar.css                # Sidebar layout, navigation links, and badges
+│   ├── components.css             # Reusable UI cards, buttons, badges, and modals
+│   ├── pages.css                  # Specific styles for dashboard grids and AI tools
+│   └── responsive.css             # Media queries for tablet and mobile responsiveness
+│
+├── assets/                        # Static Assets
+│   ├── icons/                     # Vector SVG UI icons
+│   └── images/                    # Logos, hero robot banners, and avatar images
+│
+└── dist/                          # Compiled production build output (generated by Vite)
+
+
+================================================================================
+16. OVERALL WORKING PROCESS
+================================================================================
+The THAMILI project operates as a unified, full-stack bilingual web platform. 
+When the project starts, the Vite development server compiles the React frontend, 
+while the Node.js backend server (`server.js`) starts listening on port 8080. 
+When the administrator opens the website in a web browser, React mounts the core 
+Layout containing the Sidebar, Header, and the Dashboard Page. 
+
+The dashboard immediately presents key platform metrics, daily usage graphs, recent 
+activity logs, and 6 quick-access cards for the THAMILI AI Hub tools. When the admin 
+or user interacts with any AI tool—such as chatting in Tamil, generating images, 
+creating full-stack code, synthesizing speech, or generating videos—the React frontend 
+sends an asynchronous HTTP request to the backend REST API endpoints (`/api/chat`, 
+`/api/code/generate`, `/api/image/generate`, etc.). The backend processes the request 
+using either connected AI APIs (Google Gemini, Pollinations AI, Google TTS) or its 
+built-in native intelligence engines, returning structured JSON responses. The frontend 
+instantly updates the view, renders formatted outputs or media players, and saves user 
+preferences in Browser LocalStorage without requiring full page reloads.
+
+
+================================================================================
+17. FINAL THAMILI PROJECT WORKFLOW
+================================================================================
+
+                              START
+                                ↓
+                         [THAMILI WEBSITE]
+                                ↓
+                            [FRONTEND]
+         (React 18 + React Router + CSS3 + Google Fonts)
+                                ↓
+                     [USER / ADMIN INTERACTION]
+      (Dashboard Navigation, AI Hub Tools, Profile Edit, Language Switch)
+                                ↓
+                        [APPLICATION LOGIC]
+          (React Contexts, Custom Hooks & Event Handlers)
+                                ↓
+                      [REST API CALL (fetch)]
+     (Endpoints: /api/chat, /api/code, /api/image, /api/video, etc.)
+                                ↓
+                         [BACKEND SERVER]
+                    (Node.js server.js / Port 8080)
+                                ↓
+        ┌───────────────────────┴───────────────────────┐
+        ↓                                               ↓
+[EXTERNAL AI APIs]                            [NATIVE OFFLINE ENGINE]
+- Google Gemini API                           - Tamil/English Rule Logic
+- Pollinations AI Engine                      - Code Template Architect
+- Google Translate TTS                        - Content Generator
+        └───────────────────────┬───────────────────────┘
+                                ↓
+                     [PROCESSING & RESPONSE]
+                     (Structured JSON Payload)
+                                ↓
+                     [CLIENT-SIDE PERSISTENCE]
+         (Browser LocalStorage for Profile, Language & Chat)
+                                ↓
+                  [ADMIN PAGE / RESULT DISPLAY]
+      (Live Re-render, Media Preview, Charts & Toast Alert)
+                                ↓
+                               END
+
+================================================================================
+Document prepared by: Kalpana
+Project: THAMILI Admin Dashboard & AI Hub
+================================================================================

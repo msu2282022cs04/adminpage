@@ -1,0 +1,338 @@
+/* THAMILI Sidebar Styling & Hover Submenus */
+
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: linear-gradient(180deg, #070e28 0%, #060b1e 50%, #030612 100%);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25);
+  overflow-y: auto;
+  overflow-x: visible;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hide scrollbar for sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Sidebar Logo */
+.sidebar-header {
+  padding: 22px 16px 16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  width: 100%;
+}
+
+.sidebar-logo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.sidebar-brand-logo {
+  width: auto;
+  max-width: 205px;
+  height: 66px;
+  max-height: 72px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  margin: 0 auto;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.sidebar-logo-link:hover .sidebar-brand-logo {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.sidebar-brand-text {
+  font-family: 'Outfit', 'Inter', 'Noto Sans Tamil', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  display: inline-block;
+  line-height: 1.1;
+  user-select: none;
+  transition: opacity 0.2s ease;
+  background: none;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+/* Navigation List */
+.sidebar-nav {
+  flex: 1;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+}
+
+.nav-item {
+  position: relative;
+  list-style: none;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  border-radius: var(--radius-full);
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-link .nav-icon {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  transition: transform 0.25s ease, stroke 0.25s ease;
+  flex-shrink: 0;
+}
+
+.nav-link .nav-text {
+  flex: 1;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+
+/* Active Nav Item - Pill Button glowing blue */
+.nav-item.active .nav-link {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #3b82f6 100%);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.45);
+}
+
+.nav-item.active .nav-link .nav-icon {
+  color: #ffffff;
+  stroke: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Hover States for Inactive Nav Items */
+.nav-item:not(.active) .nav-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(3px);
+}
+
+.nav-item:not(.active) .nav-link:hover .nav-icon {
+  stroke: #38bdf8;
+  transform: scale(1.1);
+}
+
+/* Hover Submenu Flyout Menu */
+.submenu-flyout {
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%) translateX(-8px);
+  background: rgba(10, 21, 53, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  min-width: 200px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 15px rgba(56, 189, 248, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  z-index: 1000;
+}
+
+/* Submenu Arrow pointer */
+.submenu-flyout::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background: #0a1535;
+  border-left: 1px solid rgba(56, 189, 248, 0.2);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.nav-item:hover .submenu-flyout {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(-50%) translateX(0);
+}
+
+.submenu-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.submenu-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.submenu-link .sub-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #38bdf8;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+}
+
+.submenu-link:hover {
+  background: rgba(37, 99, 235, 0.25);
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+.submenu-link:hover .sub-dot {
+  opacity: 1;
+  transform: scale(1.4);
+  background: #60a5fa;
+  box-shadow: 0 0 8px #60a5fa;
+}
+
+/* Sidebar Footer & Watermark */
+.sidebar-footer {
+  margin-top: auto;
+  padding: 16px 18px 20px 18px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: url('../assets/images/gopuram-watermark.svg') no-repeat bottom right;
+  background-size: 160px auto;
+}
+
+/* Admin Profile Card in Sidebar */
+.sidebar-admin-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+
+.sidebar-admin-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-avatar-wrapper {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sidebar-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.online-indicator {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 10px;
+  height: 10px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  border: 2px solid #060b1e;
+}
+
+.sidebar-admin-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-admin-name {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.sidebar-admin-role {
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* Tamil Quote at Sidebar Bottom */
+.sidebar-quote-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+}
+
+.sidebar-quote-icon {
+  font-size: 14px;
+  filter: drop-shadow(0 0 6px rgba(74, 222, 128, 0.6));
+}
+
+.sidebar-quote-text {
+  font-size: 12px;
+  color: #93c5fd;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  text-shadow: 0 0 8px rgba(147, 197, 253, 0.25);
+}
